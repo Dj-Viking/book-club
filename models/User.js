@@ -27,6 +27,7 @@ User.init(
     // define a username column
     username: {
       type: DataTypes.STRING,
+      unique: true,
       allowNull: false,
     },
     // define a password column
