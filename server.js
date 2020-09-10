@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-//const routes = require('./controllers');
+const routes = require('./controllers');
 const sequelize = require('./config/connection.js');
 require('dotenv').config();
 
@@ -50,16 +50,24 @@ app.use(
   )
 );
 
+app.use(
+  express.static(
+    path.join(
+      __dirname, 'public'
+    )
+  )
+);
+
 //routes middleware
-//app.use(routes);
+app.use(routes);
 
 //sequelize sync will go here and .then() into server port listen
 //connect to the database
 // and set force to false if we're making constant changes on the back end sequelize models
-// set to true if we want data to persist since we are not touching the sequelize in that case
+// set to true if we want data to persist since we are not touching the sequelize models if they are set in stone 
 sequelize.sync(
   {
-    force: true
+    force: false
   }
 )
 .then(//listen on the PORT
