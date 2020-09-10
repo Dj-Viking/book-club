@@ -63,11 +63,11 @@ app.use(routes);
 
 //sequelize sync will go here and .then() into server port listen
 //connect to the database
-// and set force to false if we're making constant changes on the back end sequelize models
-// set to true if we want data to persist since we are not touching the sequelize models if they are set in stone 
+// and set force to true if we're making constant changes on the back end sequelize models and need to sync new changes
+// set to false if we want data to persist since we are not touching the sequelize models if they are set in stone 
 sequelize.sync(
   {
-    force: false
+    force: true
   }
 )
 .then(//listen on the PORT
