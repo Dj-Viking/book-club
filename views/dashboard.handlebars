@@ -1,0 +1,36 @@
+<a href="/">Back To Home Page</a> <a href="/dashboard/delete-account" class="delete-btn-style">Delete Account</a>
+
+<section>
+  <h2>Search a Book!</h2>
+
+  <form class="new-post-form">
+    <div>
+      <label for="post-title">Title</label>
+      <input type="text" id="post-title" name="post-title" placeholder="Your title here" autocomplete="off"/>
+    </div>
+    <div>
+      <label for="post-url">Link To Article</label>
+      <input id="post-url" name="post-url" placeholder="https://www.example.com" autocomplete="off"/>
+    </div>
+    <button type="submit" class="btn">Search</button>
+    <p class="hide-before-error" id="post-err">
+      Type something to make a post!
+    </p>
+  </form>
+</section>
+{{#if posts.length}}
+<section>
+  <h2>
+    Your Books
+  </h2>
+  <ol>
+    {{#each posts as |post|}}
+    <li>
+      {{> post-info post}}
+      <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit Post</a>
+    </li>
+    {{/each}}
+  </ol>
+</section>
+{{/if}}
+<script src="/javascript/add-post.js"></script>

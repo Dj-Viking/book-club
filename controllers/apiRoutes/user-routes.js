@@ -19,25 +19,29 @@ router.post('/', (req, res) => {
       password: req.body.password
     }
   )
-  .then(dbUserData => {
+  .then(userModel => {
     req.session.save(
       () => {
-        req.session.user_id = dbUserData.id;
-        req.session.username = dbUserData.username;
+        req.session.user_id = userModel.id;
+        req.session.username = userModel.username;
         req.session.loggedIn = true;
-        res.json(dbUserData);
+        res.json(userModel);
       }
     );
   })
   .catch(err => {
     console.log(err);
     res.status(500).json("duplicate or wrong format")
-  })
+  });
 }); 
 
-
+let bookInfo = {}
 //test the user form post request which will allow the server to make an https get request
 router.post('/search', async (req, res) => {
+  //wrap the whole thing in an if conditional checking if the session exists
+  // if (req.session) {
+
+  // }
   console.log(`
   
   `);
@@ -56,10 +60,19 @@ router.post('/search', async (req, res) => {
     const apiRes = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${req.body.title}+inauthor:${req.body.author}&key=${process.env.API_KEY}`)
     const json = await apiRes.json();
     // console.log(json);
-    res.status(200).json(json);
+    bookInfo = {
+
+    }
+    res.status(200).json(json.items[0].volumeInfo);
   } catch (error) {
     console.log(error);
   }
 });
+
+
+// user adds a book to their library
+// router.post('/add', (req, res) => {
+
+// });
 
 module.exports = router;
