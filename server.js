@@ -3,7 +3,7 @@ const path = require('path');
 const routes = require('./controllers');
 const sequelize = require('./config/connection.js');
 require('dotenv').config();
-const { User, Club, Book, Library } = require('./models');
+const { User, Club, Book, Library, Bulletin } = require('./models');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -69,7 +69,7 @@ app.use(routes);
 
 sequelize.sync(
   {
-    force: false
+    force: true
   }
 )
 .then(//listen on the PORT
@@ -83,11 +83,11 @@ sequelize.sync(
     });
   }
 )
-.then(//after sequelize sync and server port listen, seed the club table with data
+.then(//seed the club table with data
   () => {
     setTimeout(async () => {
       try {
-        const clubInfo = await Club.findAll();//check if some data exists already
+        const clubInfo = await Club.findAll();//check if Clubs exist already
         //console.log(clubInfo);
         if(clubInfo[0] === undefined) {//if none exist create them
           Club.create({
@@ -107,4 +107,25 @@ sequelize.sync(
     }, 500);
   }
 )
+// .then(
+//   () => {
+//     setTimeout(async () => {
+//       try {
+//         const userInfo = await User.findAll();
+//         //console.log(userInfo);
+//         if (userInfo[0] === undefined) {
+//           const userCreate = await User.create({
+//             username: "test seeded user",
+//             password: "password",
+//             club_id:  1
+//           });
+//           //console.log(userCreate);
+//         }
+//       } catch (error) {
+//         console.log(error);
+//         process.exit(0);
+//       }
+//     }, 1000);
+//   }
+// )
 .catch(error => console.log(error));

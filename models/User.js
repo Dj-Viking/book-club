@@ -43,7 +43,7 @@ User.init(
     club_id : {
       type: DataTypes.INTEGER,
       references: {
-        model: 'user', 
+        model: 'club', 
         key: 'id'
       }
     }

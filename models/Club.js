@@ -15,14 +15,6 @@ Club.init ( {
         // turn on auto increment
         autoIncrement: true,
       },
-      //user_id fk
-      user_id: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: "club",
-          key: "id",
-        },
-      },
       //club_title
       club_title: {
         type: DataTypes.STRING,

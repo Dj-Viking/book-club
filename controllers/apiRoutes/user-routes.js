@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const fetch = require('node-fetch');
-const User = require('../../models/User.js')
+const {User, Club, Library, Book } = require('../../models');
 require('dotenv').config();
 //import for models will go here
 
@@ -63,7 +63,112 @@ router.post('/search', async (req, res) => {
     bookInfo = {
 
     }
+    //grabbing the first book in the search list for now
     res.status(200).json(json.items[0].volumeInfo);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+// get all users
+router.get('/', async (req, res) => {
+  console.log(`
+  
+  `);
+  console.log('\x1b[33m', 'client request to get all users', '\x1b[00m');
+  console.log(`
+  
+  `);
+  try {
+    const userInfo = await User.findAll(
+      {
+        attributes: {
+          exclude: ['password'],
+        },
+        include: [
+          {
+            model: Club
+          }
+        ]
+      }
+    );
+    if (userInfo[0] === undefined) {
+      res.status(404).json({error: "No users were found"});
+    }
+    res.status(200).json(userInfo);
+  } catch (error) {
+    console.log(error);
+  }
+
+});
+
+//testing this group seeding for deploying so making a get route to test if groups exist when
+// project is deployed to heroku
+// works for insomnia but real test is seeing if the seed works at the heroku build time
+router.get('/clubs', async (req, res) => {
+  console.log(`
+  
+  `);
+  console.log('\x1b[33m', 'client request to get all clubs', '\x1b[00m');
+  console.log(`
+  
+  `);
+  try {
+    const clubInfo = await Club.findAll({
+      // attributes: {
+      //   exclude: ['user_id']
+      // },
+      include: [
+        {
+          model: User,
+          attributes: {
+            exclude: ['password', 'user_id']
+          }
+        }
+      ]
+    });
+    if (clubInfo[0] === undefined) {
+      res.status(404).json({error: "there were no groups found"});
+    }
+    res.status(200).json(clubInfo);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+//update users club by id
+router.put('/clubs/:id', (req, res) => {
+  console.log(`
+  
+  `);
+  console.log('\x1b[33m', 'client request to update a user by user id', '\x1b[00m');
+  console.log(`
+  
+  `);
+  console.log(req.body);
+  /**
+   * req.body should be as the following example
+   * {
+   *  "club_id": 1
+   * }
+   */
+  if (!req.body) {
+    res.status(400).json({error: "request formatted incorrectly"});
+  }
+  try {
+    User.update(
+      req.body,
+      {
+        where: {
+          id: req.params.id
+        }
+      }
+    )
+    .then(user => {
+      console.log(user);
+      res.status(200).json(user);
+    })
+    .catch(error => console.log(error));
   } catch (error) {
     console.log(error);
   }
