@@ -10,4 +10,16 @@ const Library = require("./Library.js");
 
 //all table foreign relationships will go in here
 
+User.belongsToMany(Group, {
+    foreignKey: 'user_id'
+}); 
+
+Group.belongsToMany(User, {
+    foreignKey: 'group_id'
+}); 
+
+Library.belongsTo(User, {
+    foreignKey: 'user_id'
+});
+
 module.exports = { User, Group, Library };
