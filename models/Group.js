@@ -18,14 +18,13 @@ Group.init ( {
       //user_id fk
       user_id: {
         type: DataTypes.INTEGER,
-        allowNull: false,
         references: {
-          model: "user",
+          model: "group",
           key: "id",
         },
       },
       //title
-      title: {
+      group_title: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true

@@ -19,32 +19,19 @@ Library.init(
     //user_id fk
     user_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
       references: {
         model: "user",
         key: "id",
       },
     },
-    //title
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    //author
-    author: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    //genre
-    genre: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    //picture (type: datatype.string will be link img = src 'from api' )
-    picture: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
+    
+    book_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'book',
+        key: 'id'
+      }
+    }
   },
   {
     // pass in our imported sequelize connection (the direct connection to our database)
