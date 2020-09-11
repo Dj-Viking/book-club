@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
+{{#if loggedIn}}
+<h2>Welcome back, <span class="username">{{username}}</span> </h2>
+{{/if}}
+{{!-- <h2>Search a book!</h2> --}}
+<ol class="post-list">
+  {{#each posts as |post|}}
+  <li>
+    {{> post-info post}}
+  </li>
+  {{/each}}
+</ol>
