@@ -3,7 +3,8 @@ const sequelize = require("../config/connection");
 
 class Library extends Model {}
 // define table columns and configuration
-Library.init(
+Library.init
+(
   {
     // define an id column
     id: {

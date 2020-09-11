@@ -3,7 +3,8 @@ const sequelize = require('../config/connection.js');
 
 class Book extends Model {}
 
-Book.init(
+Book.init
+(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,22 +12,19 @@ Book.init(
       primaryKey: true,
       autoIncrement: true
     },
-    //book_title
     book_title: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    //author
     author: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    //genre
     genre: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    //picture (type: datatype.string will be link img = src 'from api' )
+    //picture (type: datatype.string will be link img = src 'link from api' )
     picture: {
       type: DataTypes.STRING,
       allowNull: false,

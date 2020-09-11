@@ -114,8 +114,8 @@ sequelize.sync(
         //console.log(userInfo);
         if (userInfo[0] === undefined) {
           const userCreate = await User.create({
-            username: "test user",
-            password: "password",
+            username: "asdf",
+            password: "asdf",
             club_id:  1
           });
           //console.log(userCreate);

@@ -2,7 +2,6 @@ const User = require("./User.js");
 const Club = require("./Club.js");
 const Library = require("./Library.js");
 const Book = require('./Book.js')
-const Bulletin = require('./Bulletin.js');
 /** keep in mind, until we actually put data
  * into the tables themselves with some post routes
  * and/or manually seeding at server start up - the tables wont be created yet
@@ -32,4 +31,4 @@ User.belongsTo(Club, {
     //constraints: false
 });
 
-module.exports = { User, Club, Library, Book, Bulletin };
+module.exports = { User, Club, Library, Book };

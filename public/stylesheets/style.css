@@ -1,0 +1,8 @@
+.hide-before-error {
+  display: none;
+  color: red;
+}
+.show-after-error {
+  display: block;
+  color: red;
+}
