@@ -22,7 +22,7 @@ Book.init
     },
     genre: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     //picture (type: datatype.string will be link img = src 'link from api' )
     picture: {

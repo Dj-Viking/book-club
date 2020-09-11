@@ -64,7 +64,7 @@ router.post('/search', async (req, res) => {
 
     }
     //grabbing the first book in the search list for now
-    res.status(200).json(json.items[0].volumeInfo);
+    res.status(200).json(json.items);
   } catch (error) {
     console.log(error);
   }
@@ -168,6 +168,8 @@ router.get('/', async (req, res) => {
 //testing this group seeding for deploying so making a get route to test if groups exist when
 // project is deployed to heroku
 // works for insomnia but real test is seeing if the seed works at the heroku build time
+// works with heroku woot
+//get all clubs
 router.get('/clubs', async (req, res) => {
   console.log(`
   
@@ -192,6 +194,27 @@ router.get('/clubs', async (req, res) => {
     }
     res.status(200).json(clubInfo);
   } catch (error) {
+    console.log(error);
+  }
+});
+
+//get all books
+router.get('/books', async (req, res) => {
+  console.log(`
+  
+  `);
+  console.log('\x1b[33m', 'client request to get all books', '\x1b[00m');
+  console.log(`
+  
+  `);
+  try {
+    const bookInfo = await Book.findAll();
+    console.log(bookInfo);
+    if (bookInfo[0] === undefined) {
+      res.status(404).json({error: "no books were found"});
+    }
+    res.status(200).json(bookInfo);
+  } catch (error) { 
     console.log(error);
   }
 });

@@ -21,13 +21,11 @@ User.belongsToMany(Book, {
 });
 
 Club.hasMany(User, {
-    // through: Bulletin,
-    foreignKey: 'club_id',
+    foreignKey: 'club_id'
     //constraints: false
 });
 User.belongsTo(Club, {
-    // through: Bulletin,
-    foreignKey: 'club_id',
+    foreignKey: 'club_id'
     //constraints: false
 });
 
