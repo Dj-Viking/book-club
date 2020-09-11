@@ -3,7 +3,7 @@ const path = require('path');
 const routes = require('./controllers');
 const sequelize = require('./config/connection.js');
 require('dotenv').config();
-const { User, Club, Book, Library, Bulletin } = require('./models');
+const { User, Club, Book, Library } = require('./models');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -69,7 +69,7 @@ app.use(routes);
 
 sequelize.sync(
   {
-    force: true
+    force: false
   }
 )
 .then(//listen on the PORT
@@ -139,13 +139,19 @@ sequelize.sync(
         const bookInfo = await Book.findAll();
         //console.log(bookInfo);
         if (bookInfo[0] === undefined) {
-          const bookCreate = await Book.create({
+          const bookCreate1 = await Book.create({
             book_title: "Flowers for Algernon",
             author: "Daniel Keyes",
             genre: "Fiction",
             picture: "http://books.google.com/books/content?id=gK98gXR8onwC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api"
           });
-          //console.log(bookCreate);
+          //console.log(bookCreate1);
+          const bookCreate2 = await Book.create({
+            book_title: "The Fellowship of the Ring (the Lord of the Rings, Book 1)",
+            author: "J.R.R. Tolkien",
+            genre: "Fiction",
+            picture: "http://books.google.com/books/content?id=CalSzQEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api"
+          });
         }
       } catch (error){
         console.log(error);

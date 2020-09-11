@@ -35,7 +35,7 @@ router.post('/', (req, res) => {
   });
 }); 
 
-let bookInfo = {}
+let bookInfo = {};
 //test the user form post request which will allow the server to make an https get request
 router.post('/search', async (req, res) => {
   //wrap the whole thing in an if conditional checking if the session exists
@@ -151,6 +151,9 @@ router.get('/', async (req, res) => {
         include: [
           {
             model: Club
+          },
+          {
+            model: Book
           }
         ]
       }
@@ -184,7 +187,7 @@ router.get('/clubs', async (req, res) => {
         {
           model: User,
           attributes: {
-            exclude: ['password', 'user_id']
+            exclude: ['password']
           }
         }
       ]
@@ -208,7 +211,7 @@ router.get('/books', async (req, res) => {
   
   `);
   try {
-    const bookInfo = await Book.findAll();
+    const bookInfo = await Book.findAll({});
     console.log(bookInfo);
     if (bookInfo[0] === undefined) {
       res.status(404).json({error: "no books were found"});
@@ -219,7 +222,13 @@ router.get('/books', async (req, res) => {
   }
 });
 
-//update users club by id
+//get library
+router.get('/library', async (req, res) => {
+  const libRes = await Library.findAll();
+  res.status(200).json(libRes);
+});
+
+//update users club from their user id
 router.put('/clubs/:id', (req, res) => {
   console.log(`
   
@@ -258,9 +267,79 @@ router.put('/clubs/:id', (req, res) => {
 });
 
 
-// user adds a book to their library
-// router.post('/add', (req, res) => {
+// user updates the book into their library by which user id is updating their library
+// body will have book_id as an array hopefully
+router.put('/library/:id', (req, res) => {
+  console.log(`
+  
+  `);
+  console.log('\x1b[33m', `client request to update a book into the user's library by user id`, '\x1b[00m');
+  console.log(`
+  
+  `);
+  console.log(req.body);
+  /**
+   * req.body should be as the following example
+   * looking to have an array because a user can have many books through the library table
+   * so each time any user updates a book to the front end is pushing this number into the 
+   * available array array
+   * {
+   *  "book_ids": [1, 2]
+   * }
+   */
+  if (!req.body) {
+    res.status(400).json({error: "request formatted incorrectly"});
+  }
+  console.log(req.body);
+  User.update
+  ( 
+    req.body,
+    {
+      where: {
+        id: req.params.id
+      }
+    }
+  )
+  .then(user => {
+    //find all associated books from library
+    return Library.findAll(
+      {
+        where: {user_id: req.params.id}
+      }
+    )
+  })
+  .then(library => {
+    //get list of current book_ids
+    const book_ids = library.map(({book_id})=> book_id);
+    //create filtered list of new book_ids
+    const newBook_ids = req.body.book_ids
+    .filter((book_id) => !book_ids.includes(book_id))
+    .map((book_id) => {
+      return {
+        user_id: req.params.id,
+        book_id,
+      };
+    });
+    //figure out which books to remove
+    const book_idsToRemove = library
+    .filter(({ book_id }) => !req.body.book_ids.includes(book_id))
+    .map(({ id }) => id);
 
-// });
+    //run both actions
+    return Promise.all([
+      Library.destroy({
+        where: {
+          id: book_idsToRemove
+        }
+      }),
+      Library.bulkCreate(newBook_ids),
+    ]);
+  })
+  .then(updatedLibrary => res.status(200).json(updatedLibrary))
+  .catch(err => {
+    console.log(err);
+    res.status(400).json(err);
+  });
+});
 
 module.exports = router;
