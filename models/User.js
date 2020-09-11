@@ -40,7 +40,7 @@ User.init(
       },
     },
 
-    group_id : {
+    club_id : {
       type: DataTypes.INTEGER,
       references: {
         model: 'user', 

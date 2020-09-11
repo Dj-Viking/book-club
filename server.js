@@ -3,6 +3,7 @@ const path = require('path');
 const routes = require('./controllers');
 const sequelize = require('./config/connection.js');
 require('dotenv').config();
+const { User, Club, Book, Library } = require('./models');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -65,9 +66,10 @@ app.use(routes);
 //connect to the database
 // and set force to true if we're making constant changes on the back end sequelize models and need to sync new changes
 // set to false if we want data to persist since we are not touching the sequelize models if they are set in stone 
+
 sequelize.sync(
   {
-    force: true
+    force: false
   }
 )
 .then(//listen on the PORT
@@ -79,6 +81,30 @@ sequelize.sync(
     app.listen(PORT, () => {
       console.log('\x1b[33m', `Now Listening on port ${PORT}!`, '\x1b[00m');
     });
+  }
+)
+.then(//after sequelize sync and server port listen, seed the club table with data
+  () => {
+    setTimeout(async () => {
+      try {
+        const clubInfo = await Club.findAll();//check if some data exists already
+        //console.log(clubInfo);
+        if(clubInfo[0] === undefined) {//if none exist create them
+          Club.create({
+            club_title: "Biblio Nomads"
+          });
+          Club.create({
+            club_title: "Fictionizers"
+          });
+          Club.create({
+            club_title: "Marathon Readers"
+          })
+        }
+      } catch (error) {
+        console.log(error);
+        process.exit(0);
+      }
+    }, 500);
   }
 )
 .catch(error => console.log(error));

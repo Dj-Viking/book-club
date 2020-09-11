@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Group extends Model {}
+class Club extends Model {}
 
-Group.init ( {
+Club.init ( {
     // define an id column
     id: {
         // use the special Sequelize DataTypes object provide what type of data it is
@@ -19,12 +19,12 @@ Group.init ( {
       user_id: {
         type: DataTypes.INTEGER,
         references: {
-          model: "group",
+          model: "club",
           key: "id",
         },
       },
-      //title
-      group_title: {
+      //club_title
+      club_title: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true
@@ -40,7 +40,7 @@ Group.init ( {
     // use underscores instead of camel-casing (i.e. `comment_text` and not `commentText`)
     underscored: true,
     // make it so our model name stays lowercase in the database
-    modelName: "group",
+    modelName: "club",
 });
 
-module.exports = Group;
+module.exports = Club;
