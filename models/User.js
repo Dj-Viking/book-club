@@ -39,6 +39,15 @@ User.init(
         len: [4],
       },
     },
+
+    group_id : {
+      type: DataTypes.INTEGER, 
+      allowNull: false, 
+      references: {
+        model: 'group', 
+        key: 'id'
+      }
+    }
   },
   {
     hooks: {
