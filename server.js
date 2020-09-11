@@ -3,6 +3,7 @@ const path = require('path');
 const routes = require('./controllers');
 const sequelize = require('./config/connection.js');
 require('dotenv').config();
+const { User, Club, Book, Library, Bulletin } = require('./models');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -65,6 +66,7 @@ app.use(routes);
 //connect to the database
 // and set force to true if we're making constant changes on the back end sequelize models and need to sync new changes
 // set to false if we want data to persist since we are not touching the sequelize models if they are set in stone 
+
 sequelize.sync(
   {
     force: true
@@ -79,6 +81,76 @@ sequelize.sync(
     app.listen(PORT, () => {
       console.log('\x1b[33m', `Now Listening on port ${PORT}!`, '\x1b[00m');
     });
+  }
+)
+.then(//seed the club table with data
+  () => {
+    setTimeout(async () => {
+      try {
+        console.log(``);
+        console.log("\x1b[33m", "seeding club table with data...", "\x1b[00m");
+        const clubInfo = await Club.findAll();//check if Clubs exist already
+        //console.log(clubInfo);
+        if(clubInfo[0] === undefined) {//if none exist create them
+          Club.create({
+            club_title: "Biblio Nomads"
+          });
+          Club.create({
+            club_title: "Fictionizers"
+          });
+          Club.create({
+            club_title: "Marathon Readers"
+          })
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }, 500);
+  }
+)
+.then(// seed a test user
+  () => {
+    setTimeout(async () => {
+      console.log(``);
+      console.log("\x1b[33m", "seeding user table with data...", "\x1b[00m");
+      try {
+        const userInfo = await User.findAll();
+        //console.log(userInfo);
+        if (userInfo[0] === undefined) {
+          const userCreate = await User.create({
+            username: "asdf",
+            password: "asdf",
+            club_id:  1
+          });
+          //console.log(userCreate);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }, 1000);
+  }
+)
+.then(// seed a test book
+  () => {
+    setTimeout(async () => {
+      console.log(``);
+      console.log("\x1b[33m", "seeding book table with data...", "\x1b[00m");
+      try {
+        const bookInfo = await Book.findAll();
+        //console.log(bookInfo);
+        if (bookInfo[0] === undefined) {
+          const bookCreate = await Book.create({
+            book_title: "Flowers for Algernon",
+            author: "Daniel Keyes",
+            genre: "Fiction",
+            picture: "http://books.google.com/books/content?id=gK98gXR8onwC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api"
+          });
+          //console.log(bookCreate);
+        }
+      } catch (error){
+        console.log(error);
+      }
+    }, 1500)
   }
 )
 .catch(error => console.log(error));

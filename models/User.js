@@ -11,7 +11,8 @@ class User extends Model {
 }
 
 // define table columns and configuration
-User.init(
+User.init
+(
   {
     // define an id column
     id: {
@@ -40,11 +41,10 @@ User.init(
       },
     },
 
-    group_id : {
-      type: DataTypes.INTEGER, 
-      allowNull: false, 
+    club_id : {
+      type: DataTypes.INTEGER,
       references: {
-        model: 'group', 
+        model: 'club', 
         key: 'id'
       }
     }

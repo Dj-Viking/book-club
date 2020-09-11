@@ -1,9 +1,19 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection.js');
-const { Library, User, Group } = require('../models');
+const { Library, User, Club, Book } = require('../models');
 
 router.get('/', (req, res) => {
-  res.render('homepage');
+  console.log(`
+  `);
+  console.log("\x1b[33m", "Client request for homepage render", "\x1b[00m");
+  console.log(`
+  `);
+  console.log(req.session);
+  res.render('homepage', {
+    loggedIn: req.session.loggedIn,
+    username: req.session.username,
+    user_id: req.session.user_id
+  });
 });
 
 //get login page

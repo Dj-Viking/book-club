@@ -1,13 +1,13 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Library extends Model {}
-// define table columns and configuration
-Library.init
-(
+class Club extends Model {}
+
+Club.init 
+( 
   {
-    // define an id column
-    id: {
+  // define an id column
+  id: {
       // use the special Sequelize DataTypes object provide what type of data it is
       type: DataTypes.INTEGER,
       // this is the equivalent of SQL's `NOT NULL` option
@@ -17,22 +17,12 @@ Library.init
       // turn on auto increment
       autoIncrement: true,
     },
-    //user_id fk
-    user_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "user",
-        key: "id",
-      },
+    //club_title
+    club_title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true
     },
-    
-    book_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'book',
-        key: 'id'
-      }
-    }
   },
   {
     // pass in our imported sequelize connection (the direct connection to our database)
@@ -44,8 +34,8 @@ Library.init
     // use underscores instead of camel-casing (i.e. `comment_text` and not `commentText`)
     underscored: true,
     // make it so our model name stays lowercase in the database
-    modelName: "library",
+    modelName: "club",
   }
 );
 
-module.exports = Library;
+module.exports = Club;
