@@ -102,30 +102,28 @@ sequelize.sync(
         }
       } catch (error) {
         console.log(error);
-        process.exit(0);
       }
     }, 500);
   }
 )
-// .then(
-//   () => {
-//     setTimeout(async () => {
-//       try {
-//         const userInfo = await User.findAll();
-//         //console.log(userInfo);
-//         if (userInfo[0] === undefined) {
-//           const userCreate = await User.create({
-//             username: "test seeded user",
-//             password: "password",
-//             club_id:  1
-//           });
-//           //console.log(userCreate);
-//         }
-//       } catch (error) {
-//         console.log(error);
-//         process.exit(0);
-//       }
-//     }, 1000);
-//   }
-// )
+.then(
+  () => {
+    setTimeout(async () => {
+      try {
+        const userInfo = await User.findAll();
+        //console.log(userInfo);
+        if (userInfo[0] === undefined) {
+          const userCreate = await User.create({
+            username: "test user",
+            password: "password",
+            club_id:  1
+          });
+          //console.log(userCreate);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }, 1000);
+  }
+)
 .catch(error => console.log(error));

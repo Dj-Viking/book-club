@@ -115,9 +115,6 @@ router.get('/clubs', async (req, res) => {
   `);
   try {
     const clubInfo = await Club.findAll({
-      // attributes: {
-      //   exclude: ['user_id']
-      // },
       include: [
         {
           model: User,
