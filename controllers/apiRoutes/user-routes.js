@@ -35,7 +35,6 @@ router.post('/', (req, res) => {
   });
 }); 
 
-let bookInfo = {};
 //test the user form post request which will allow the server to make an https get request
 router.post('/search', async (req, res) => {
   //wrap the whole thing in an if conditional checking if the session exists
@@ -55,15 +54,22 @@ router.post('/search', async (req, res) => {
   }
 
   console.log(req.body);
+  console.log(req.path);
   // res.status(200).json({message: "post success"});
   try {
     const apiRes = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${req.body.book_title}+inauthor:${req.body.author}&key=${process.env.API_KEY}`)
     const json = await apiRes.json();
     // console.log(json);
-    bookInfo = {
-
-    }
-    //grabbing the first book in the search list for now
+    /**
+     *  loop through the json to get the results objects into the array that
+     *  we want to respond with, only really want the volume info
+    */
+   const searchResults = [];
+    for(let i = 0; i < json.length; i++) {
+      searchResults.push(json[i].volumeInfo);
+    };
+    console.log("\x1b[33m", "checking the search results array", "\x1b[00m");
+    //console.log(searchResults);
     res.status(200).json(json.items);
   } catch (error) {
     console.log(error);

@@ -1,0 +1,19 @@
+<article class="book">
+  {{#each this}}
+  <div class="book-image">
+    {{!-- book thumbnail --}}
+    <img src="{{imageLinks.smallThumbnail}}">
+  </div>
+  <div class="book-title">
+    Title: {{title}}
+  </div>
+  <div class="book-authors">
+    <p>
+      {{!-- not sure how this will work if this is an array --}}
+      {{!-- {{#each}} --}}
+      Authors: {{authors}}
+      {{!-- {{/each}} --}}
+    </p>
+  </div>
+  {{/each}}
+</article>
