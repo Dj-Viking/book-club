@@ -1,19 +1,26 @@
-<article class="book">
-  {{#each this}}
-  <div class="book-image">
-    {{!-- book thumbnail --}}
-    <img src="{{imageLinks.smallThumbnail}}">
-  </div>
-  <div class="book-title">
-    Title: {{title}}
-  </div>
-  <div class="book-authors">
-    <p>
-      {{!-- not sure how this will work if this is an array --}}
-      {{!-- {{#each}} --}}
-      Authors: {{authors}}
-      {{!-- {{/each}} --}}
-    </p>
-  </div>
-  {{/each}}
-</article>
+{{#each this}}
+<section>
+    <div>
+      <article class="book">
+        <div class="book-image">
+          Picture:{{!-- book thumbnail --}}
+          {{#if imageLinks.smallThumbnail}}
+          <img src="{{imageLinks.smallThumbnail}}">
+          {{else}}
+          <div>No Picture Available!</div>
+          {{/if}}
+        </div>
+        <div class="book-title">
+          {{!-- book title --}}
+          Title: {{title}}
+        </div>
+        <div class="book-authors">
+          <span>
+            {{!-- authors --}}
+            Authors: {{authors}}
+          </span>
+        </div>
+      </article>
+    </div>
+</section>
+{{/each}}

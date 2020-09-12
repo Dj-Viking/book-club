@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
   });
 });
 
-router.post('/search', async (req, res) => {
+router.get('/search', async (req, res) => {
   console.log(`
   
   `);
@@ -28,14 +28,14 @@ router.post('/search', async (req, res) => {
   console.log(`
   
   `);
-  console.log(req.body);
-  if (!req.body.book_title || !req.body.author) {
+  console.log(req.query);
+  if (!req.query.book_title || !req.query.author) {
     return;
   }
 
   // res.status(200).json({message: "post success"});
   try {
-    const apiRes = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${req.body.book_title}+inauthor:${req.body.author}&key=${process.env.API_KEY}`)
+    const apiRes = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${req.query.book_title}+inauthor:${req.query.author}&key=${process.env.API_KEY}`)
     const json = await apiRes.json();
     /**
      *  loop through the json to get the results objects into the array that
@@ -46,12 +46,13 @@ router.post('/search', async (req, res) => {
       bookData.push(json.items[i].volumeInfo);
     };
     console.log("\x1b[33m", "checking the search results array", "\x1b[00m");
-    console.log(bookData);
+    //console.log(bookData);
     //create object to send to handlebars to render through each book-info partial
     const books = {
       searchResults: bookData
     }
-    res.status(200).render('book-search', books);
+    //res.status(200).render('book-search', books);
+    res.render("book-search", books);
     // res.status(200).json(bookData);
   } catch (error) {
     console.log(error);
