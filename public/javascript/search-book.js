@@ -15,7 +15,7 @@ const searchFormHandler = async (event) => {
       }, 3000);
       throw new Error("Search field can't be empty.")
     }
-    const response = await fetch('/dashboard/search', {
+    const response = await fetch('/book-search/search', {
       method: 'POST',
       body: JSON.stringify(
         {
@@ -28,8 +28,9 @@ const searchFormHandler = async (event) => {
       }
     });
     if (response.ok) {
-      const json = await response.json();
-      console.log(json);
+      // const json = await response.json();
+      // console.log(json);
+      console.log("got the response");
     }
     // console.log("There was an error.");
     console.log(response.statusText);

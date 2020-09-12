@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
   if (!req.session.loggedIn) {
     res.status(401).json({message: "Unauthorized access of the dashboard, please log in to access."});
   }
-  res.render('dashboard', {
+  res.render('book-search', {
     loggedIn: req.session.loggedIn,
     user_id: req.session.user_id,
     username: req.session.username
@@ -37,9 +37,22 @@ router.post('/search', async (req, res) => {
   try {
     const apiRes = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${req.body.book_title}+inauthor:${req.body.author}&key=${process.env.API_KEY}`)
     const json = await apiRes.json();
-    console.log(json);
-    //grabbing the first book in the search list for now
-    res.status(200).json(json.items);
+    /**
+     *  loop through the json to get the results objects into the array that
+     *  we want to respond with, only really want the volume info
+    */
+    const bookData = [];
+    for(let i = 0; i < json.items.length; i++) {
+      bookData.push(json.items[i].volumeInfo);
+    };
+    console.log("\x1b[33m", "checking the search results array", "\x1b[00m");
+    console.log(bookData);
+    //create object to send to handlebars to render through each book-info partial
+    const books = {
+      searchResults: bookData
+    }
+    res.status(200).render('book-search', books);
+    // res.status(200).json(bookData);
   } catch (error) {
     console.log(error);
   }

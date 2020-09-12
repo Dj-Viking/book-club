@@ -1,0 +1,54 @@
+<section>
+  <h2>Search for a Book to add into your Library!</h2>
+
+  <form class="book-search-form">
+    <div>
+      <label for="book-title">Book Title</label>
+      <input type="text" id="book-title" name="book-title" placeholder="Book Title" autocomplete="off"/>
+    </div>
+    <div>
+      <label for="author">Author Name</label>
+      <input id="author" name="author" placeholder="Author Name" autocomplete="off"/>
+    </div>
+    <button type="submit" class="btn">Search</button>
+    <p class="hide-before-error" id="search-err">
+      Enter something in the search fields!
+    </p>
+  </form>
+</section>
+{{!-- {{#if posts.length}} --}}
+{{#each books}}
+<section>
+  <h2>
+    Search Results
+  </h2>
+    {{!-- {{#each posts as |post|}} --}}
+    {{!-- {{#each books as |book|}} --}}
+    <div>
+      {{!-- {{> post-info post}} --}}
+      <article class="book">
+        {{!-- {{#each book}} --}}
+        <div class="book-image">
+          {{!-- book thumbnail --}}
+          <img src="{{imageLinks.smallThumbnail}}">
+        </div>
+        <div class="book-title">
+          Title: {{title}}
+        </div>
+        <div class="book-authors">
+          <p>
+            {{!-- not sure how this will work if this is an array --}}
+            {{!-- {{#each}} --}}
+            Authors: {{authors}}
+            {{!-- {{/each}} --}}
+          </p>
+        </div>
+        {{!-- {{/each}} --}}
+      </article>
+      {{!-- <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit Post</a> --}}
+    </div>
+    {{!-- {{/each}} --}}
+
+</section>
+{{/each}}
+<script src="/javascript/search-book.js"></script>
