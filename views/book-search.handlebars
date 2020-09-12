@@ -11,40 +11,5 @@
   </div>
   <button type="submit">Search!</button>
 </form> 
-</section>
-{{!-- {{#if posts.length}} --}}
-    <h2>
-      Search Results:
-    </h2>
-{{#each searchResults}}
-<section>
-
-    <div>
-
-      <article class="book">
-
-        <div class="book-image">
-          Picture:{{!-- book thumbnail --}}
-          {{#if imageLinks.smallThumbnail}}
-          <img src="{{imageLinks.smallThumbnail}}">
-          {{else}}
-          <div>no picture available!!</div>
-          {{/if}}
-        </div>
-        <div class="book-title">
-          {{!-- book title --}}
-          Title: {{title}}
-        </div>
-        <div class="book-authors">
-          <span>
-            {{!-- not sure how this will work if this is an array --}}
-
-            Authors: {{authors}}
-
-          </span>
-        </div>
-      </article>
-    </div>
-</section>
-{{/each}}
+{{> book-info searchResults}}
 <script src="/javascript/search-book.js"></script>
