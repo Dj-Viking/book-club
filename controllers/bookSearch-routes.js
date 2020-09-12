@@ -7,7 +7,7 @@ const { Library, User, Club, Book } = require('../models');
 router.get('/', (req, res) => {
   console.log(`
   `);
-  console.log("\x1b[33m", "Client request for homepage render", "\x1b[00m");
+  console.log("\x1b[33m", "Client request for book-search render", "\x1b[00m");
   console.log(`
   `);
   if (!req.session.loggedIn) {
@@ -49,7 +49,10 @@ router.get('/search', async (req, res) => {
     //console.log(bookData);
     //create object to send to handlebars to render through each book-info partial
     const books = {
-      searchResults: bookData
+      searchResults: bookData,
+      loggedIn: req.session.loggedIn,
+      user_id: req.session.user_id,
+      username: req.session.username
     }
     //res.status(200).render('book-search', books);
     res.render("book-search", books);
