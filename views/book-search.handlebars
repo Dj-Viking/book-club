@@ -1,54 +1,50 @@
 <section>
   <h2>Search for a Book to add into your Library!</h2>
-
-  <form class="book-search-form">
-    <div>
-      <label for="book-title">Book Title</label>
-      <input type="text" id="book-title" name="book-title" placeholder="Book Title" autocomplete="off"/>
-    </div>
-    <div>
-      <label for="author">Author Name</label>
-      <input id="author" name="author" placeholder="Author Name" autocomplete="off"/>
-    </div>
-    <button type="submit" class="btn">Search</button>
-    <p class="hide-before-error" id="search-err">
-      Enter something in the search fields!
-    </p>
-  </form>
+  <form method="GET" action="/book-search/search">
+  <div>
+    <label for="fname">Book Title:</label>
+    <input type="text" id="book_title" name="book_title" placeholder="Book Title" autocomplete="off">
+  </div>
+  <div>
+    <label for="lname">Author:</label><br>
+    <input type="text" id="author" name="author" placeholder="Author" autocomplete="off">
+  </div>
+  <button type="submit">Search!</button>
+</form> 
 </section>
 {{!-- {{#if posts.length}} --}}
-{{#each books}}
+    <h2>
+      Search Results:
+    </h2>
+{{#each searchResults}}
 <section>
-  <h2>
-    Search Results
-  </h2>
-    {{!-- {{#each posts as |post|}} --}}
-    {{!-- {{#each books as |book|}} --}}
+
     <div>
-      {{!-- {{> post-info post}} --}}
+
       <article class="book">
-        {{!-- {{#each book}} --}}
+
         <div class="book-image">
-          {{!-- book thumbnail --}}
+          Picture:{{!-- book thumbnail --}}
+          {{#if imageLinks.smallThumbnail}}
           <img src="{{imageLinks.smallThumbnail}}">
+          {{else}}
+          <div>no picture available!!</div>
+          {{/if}}
         </div>
         <div class="book-title">
+          {{!-- book title --}}
           Title: {{title}}
         </div>
         <div class="book-authors">
-          <p>
+          <span>
             {{!-- not sure how this will work if this is an array --}}
-            {{!-- {{#each}} --}}
-            Authors: {{authors}}
-            {{!-- {{/each}} --}}
-          </p>
-        </div>
-        {{!-- {{/each}} --}}
-      </article>
-      {{!-- <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit Post</a> --}}
-    </div>
-    {{!-- {{/each}} --}}
 
+            Authors: {{authors}}
+
+          </span>
+        </div>
+      </article>
+    </div>
 </section>
 {{/each}}
 <script src="/javascript/search-book.js"></script>

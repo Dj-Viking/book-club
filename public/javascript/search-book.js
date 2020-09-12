@@ -3,7 +3,7 @@ const searchFormHandler = async (event) => {
   try {
     event.preventDefault();
 
-    const book_title = document.querySelector('input[name="book-title"]').value.trim();
+    const book_title = document.querySelector('input[name="book_title"]').value.trim();
     const author = document.querySelector('input[name="author"]').value.trim();
     console.log(book_title, author);
     if (!book_title || !author) {
@@ -15,25 +15,25 @@ const searchFormHandler = async (event) => {
       }, 3000);
       throw new Error("Search field can't be empty.")
     }
-    const response = await fetch('/book-search/search', {
-      method: 'POST',
-      body: JSON.stringify(
-        {
-          book_title,
-          author
-        }
-      ),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-    if (response.ok) {
-      // const json = await response.json();
-      // console.log(json);
-      console.log("got the response");
-    }
-    // console.log("There was an error.");
-    console.log(response.statusText);
+    // const response = await fetch(`/book-search/q?=${book_title}&${author}`, {
+    //   method: 'GET'
+    //   // body: JSON.stringify(
+    //   //   {
+    //   //     book_title,
+    //   //     author
+    //   //   }
+    //   // ),
+    //   // headers: {
+    //   //   'Content-Type': 'application/json'
+    //   // }
+    // });
+    // if (response.ok) {
+    //   // const json = await response.json();
+    //   // document.location.reload();
+    //   console.log("got the response");
+    // }
+    // // console.log("There was an error.");
+    // console.log(response.statusText);
   } catch (error) {
     console.log(error);
   }
