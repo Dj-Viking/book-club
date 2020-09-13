@@ -67,5 +67,14 @@ router.get('/search', async (req, res) => {
 });
 
 //user posting book to update their library
+router.post('/add-book', (req, res) => {
+  console.log(`
+  
+  `);
+  console.log('\x1b[33m', 'client request to update the user library', '\x1b[00m');
+  console.log(`
+  
+  `);
+});
 
 module.exports = router;

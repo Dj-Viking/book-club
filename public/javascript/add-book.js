@@ -31,8 +31,9 @@ const addBookSubmitHandler = async (event) => {
       method: 'POST',
       body: JSON.stringify(
         {
-          username: username,
-          password: password
+          book_title,
+          authors,
+          imgUrl
         }
       ),
       headers: {'Content-Type': 'application/json'}
