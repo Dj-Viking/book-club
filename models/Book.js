@@ -20,10 +20,10 @@ Book.init
       type: DataTypes.STRING,
       allowNull: false,
     },
-    genre: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
+    // genre: {
+    //   type: DataTypes.STRING,
+    //   allowNull: true,
+    // },
     //picture (type: datatype.string will be link img = src 'link from api' )
     picture: {
       type: DataTypes.STRING,

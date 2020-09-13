@@ -67,7 +67,7 @@ router.get('/search', async (req, res) => {
 });
 
 //user posting book to update their library
-router.post('/add-book', (req, res) => {
+router.post('/add-book', async (req, res) => {
   console.log(`
   
   `);
@@ -75,6 +75,100 @@ router.post('/add-book', (req, res) => {
   console.log(`
   
   `);
+  console.log(req.session);
+  console.log(req.body);
+  //create new book into the book table
+  const searchedBook_ids = [];
+  try {
+    const createdBook = await Book.create({
+        book_title: req.body.book_title,
+        author: req.body.author,
+        picture: req.body.picture
+    });
+    //hold on to the book id we just created
+    console.log(createdBook.dataValues.id);
+    searchedBook_ids.push(createdBook.dataValues.id);
+  
+    //place new book within the library with the user id of the user logged in
+    //look up the library where the user_id is that we want to update
+    Library.findAll(
+      {
+        where: {
+          user_id: req.session.user_id
+        }
+      }
+    )
+    .then(library => {
+      //get list of current book_ids
+      const book_ids = library.map(({book_id}) => book_id);
+      //create filtered list of new book_ids
+      const newBook_ids = searchedBook_ids
+      .filter((book_id) => !book_ids.includes(book_id))
+      .map((book_id) => {
+        return {
+          user_id: req.session.user_id,
+          book_id,
+        };
+      });
+      //figure out which books to remove
+      const book_idsToRemove = library
+      .filter(({ book_id }) => !searchedBook_ids.includes(book_id))
+      .map(({ id }) => id);
+      
+      //run both actions
+      return Promise.all([
+        // only if we are updating user
+        // Library.destroy({
+        //   where: {
+        //     id: book_idsToRemove
+        //   }
+        // }),
+        Library.bulkCreate(newBook_ids)
+      ]);
+    })
+    //update the session to carry the book_ids in an array for whenever the user logs in
+    // the session will remember which book_ids the user has in their library
+    .then(updatedLibrary => {
+      console.log(updatedLibrary[0][0].dataValues);
+      // res.status(200).json(updatedLibrary);
+    })
+    .then(
+      async () => {
+        const userBooks = []
+        //find all in the library now and update user session with all books in the library currently
+        const userInfo = await User.findOne({
+          attributes: {
+            exclude: ['password']
+          },
+          include: [
+            {
+              model: Club
+            },  
+            {
+              model: Book
+            }
+          ],
+          where: {
+            id: req.session.user_id
+          }
+        });
+        console.log(userInfo.dataValues);
+        console.log(userInfo.dataValues.books);
+        //prep the push to place user books into their session
+        for (let i = 0; i < userInfo.dataValues.books.length; i++) {
+          userBooks.push(userInfo.dataValues.books[i].dataValues.id);
+        }
+        console.log(userBooks);
+        //place the books array into the user session for later access
+        req.session.userBook_ids = userBooks;
+        console.log(req.session);
+      }
+    )
+    .catch(error => console.log(error));
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({message: "internal server error"});
+  }
 });
 
 module.exports = router;
