@@ -1,17 +1,37 @@
 <a href="/dashboard/delete-account" class="delete-btn-style">Delete Account</a>
 
 <section class="library-container">
-  <div class="header">
+  <div class="club-container">
+    <h2 class="club-name">
+      Club Association: <span>{{club}}</span>
+    </h2>
+    <p class="members">
+      {{!-- pass in members array of associated club --}}
+      club members: {{members}}
+      {{!-- member names are links to look at another users library? will have to be a different page and include books they read and their group association --}}
+    </p>
+    {{!-- <div class="not-in-these-clubs">maybe?
+      <p>
+        
+      </p>
+      <p>
+
+      </p>
+      <p>
+
+      </p>
+    </div> --}}
+  </div>
+  <div class="library-header">
     <h2>
       Your Library Book Collection
     </h2>
   </div>
   <div class="user-books">
-    USER BOOKS ALL DISPLAYED HERE ITERATED THROUGH THE BOOKS ARRAY 
-    USING HANDLEBARS RENDERING RESPONSE IN THE ROUTE >> OF AN OBJECT THAT HAS A PROPERTY AS AN ARRAY AND 
-    REFER TO THE PROPERTY IN THE HANDLEBARS FILE THAT HAS THE ARRAY OF OBJECTS AND GET PROPERTIES OF THOSE OBJECTS
-    {{!-- showing each book inside the user's library --}}
-    {{!-- User.findOne by id and render out the books array passed into handlebars --}}
-    {{!-- USER BOOK LIBRARY PARTIAL WILL GO HERE --}}
+  {{#if userBooks}}
+  <article>
+    {{> user-book-library userBooks}}
+  </article>
+  {{/if}}
   </div>
 </section>

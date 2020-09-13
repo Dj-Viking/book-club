@@ -27,7 +27,7 @@ Book.init
     //picture (type: datatype.string will be link img = src 'link from api' )
     picture: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
   },
   {

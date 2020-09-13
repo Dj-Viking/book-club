@@ -152,7 +152,7 @@ router.post('/add-book', async (req, res) => {
             id: req.session.user_id
           }
         });
-        console.log(userInfo.dataValues);
+        //console.log(userInfo.dataValues);
         console.log(userInfo.dataValues.books);
         //prep the push to place user books into their session
         for (let i = 0; i < userInfo.dataValues.books.length; i++) {
@@ -162,6 +162,7 @@ router.post('/add-book', async (req, res) => {
         //place the books array into the user session for later access
         req.session.userBook_ids = userBooks;
         console.log(req.session);
+        res.status(200).json({message: "you added a book to your library"});
       }
     )
     .catch(error => console.log(error));
