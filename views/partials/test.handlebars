@@ -1,0 +1,27 @@
+{{#each this}}
+<section>
+  <div>  
+    <article class="book">
+      <div class="book-image">
+        Picture:{{!-- book thumbnail --}}
+        {{#if imageLinks.smallThumbnail}}
+        <img src="{{imageLinks.smallThumbnail}}">
+        {{else}}
+        <div>No Picture Available!</div>
+        {{/if}}
+      </div>
+      <div class="book-title">
+        {{!-- book title --}}
+        Title: {{title}}
+      </div>
+      <div class="book-authors">
+        <span>
+          {{!-- authors --}}
+          Authors: {{authors}}
+        </span>
+        <button type="submit" id="add-btn">Add to My Library!</button>
+      </div>
+    </article>
+  </div>
+</section>
+{{/each}}
