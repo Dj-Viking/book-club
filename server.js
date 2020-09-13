@@ -21,7 +21,12 @@ const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const sess = {
   secret: process.env.SECRET,
-  cookie: {},
+  cookie: {
+    // for client connections https only but if accessing from http must set a proxy!
+    // be careful when setting this to true, as compliant clients will not send the cookie back to the server in the future if the browser does not have an HTTPS connection.
+    // secure: true
+    sameSite: 'lax'
+  },
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore(
@@ -33,6 +38,8 @@ const sess = {
 
 /** express middleware setup **/
 //session middleware
+//If you have your node.js behind a proxy and are using secure: true, you need to set “trust proxy” in express:
+// app.set('trust proxy', 1) // trust first proxy
 app.use(
   session(sess)
 );
