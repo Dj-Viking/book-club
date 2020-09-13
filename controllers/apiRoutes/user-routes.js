@@ -194,7 +194,13 @@ router.get('/clubs', async (req, res) => {
           model: User,
           attributes: {
             exclude: ['password']
-          }
+          },
+          include: [
+            {
+              model: Book,
+              attributes: ['book_title']
+            }
+          ]
         }
       ]
     });

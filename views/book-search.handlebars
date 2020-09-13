@@ -1,3 +1,7 @@
+<a href="/clubs-page">Clubs Page</a>
+<a href="/my-library">My Library</a>
+<a href="/book-search">Book Search</a> 
+<a href="/">Back to Homepage</a>
 <section>
   <h2>Search for a Book to add into your Library!</h2>
   <form method="GET" action="/book-search/search">
@@ -15,6 +19,7 @@
   </div>
 </form>
 <script src="/javascript/search-book.js"></script>
+<script src="/javascript/logout.js"></script>
 {{#if searchResults}}
 {{> book-info searchResults}}
 <script src="/javascript/add-book.js"></script>
