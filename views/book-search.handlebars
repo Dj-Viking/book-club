@@ -10,6 +10,12 @@
     <input type="text" id="author" name="author" placeholder="Author" autocomplete="off">
   </div>
   <button type="submit">Search!</button>
-</form> 
-{{> book-info searchResults}}
+  <div id="search-err" class="hide-before-error">
+    Cannot leave search fields empty!
+  </div>
+</form>
 <script src="/javascript/search-book.js"></script>
+{{#if searchResults}}
+{{> book-info searchResults}}
+<script src="/javascript/add-book.js"></script>
+{{/if}}

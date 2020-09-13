@@ -1,26 +1,35 @@
 {{#each this}}
 <section>
-    <div>
-      <article class="book">
-        <div class="book-image">
-          Picture:{{!-- book thumbnail --}}
-          {{#if imageLinks.smallThumbnail}}
-          <img src="{{imageLinks.smallThumbnail}}">
-          {{else}}
-          <div>No Picture Available!</div>
-          {{/if}}
+  <div>
+    <article class="book">
+      <form action="/book-search/add-book" method="POST" id="{{bookId}}">
+        <div class="book-img-label">
+          <label class="book-image" id="book-img" for="book-image">
+            Book Cover:{{!-- book thumbnail --}}
+            {{#if imageLinks.smallThumbnail}}
+            <img src="{{imageLinks.smallThumbnail}}">
+            {{else}}
+            No Picture Available!
+            {{/if}}
+          </label>
         </div>
-        <div class="book-title">
-          {{!-- book title --}}
-          Title: {{title}}
+        <div class="book-title-label">
+          <label class="book-title" id="book-title" for="book-title">
+            {{!-- book title --}}
+            Title: {{title}}
+          </label>
         </div>
-        <div class="book-authors">
-          <span>
+        <div class="book-authors-label">
+          <label class="book-authors" id="book-authors" for="book-authors">
             {{!-- authors --}}
             Authors: {{authors}}
-          </span>
+          </label>
         </div>
-      </article>
-    </div>
+        <div class="button-container">
+          <div id="add-btn-{{bookId}}">Add to My Library!</div>
+        </div>
+      </form>
+    </article> 
+  </div>
 </section>
 {{/each}}
