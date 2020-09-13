@@ -9,10 +9,10 @@ const addButtonEl8 = document.querySelector('#add-btn-8');
 const addButtonEl9 = document.querySelector('#add-btn-9');
 const addButtonEl10 = document.querySelector('#add-btn-10');
 const addBookSubmitHandler = async (event) => {
-  let imgUrl;
   //console.log(event.target.parentElement.parentElement);
   /* get values of the elements relating to which form the button is contained in */
   //get img URL
+  let imgUrl;
   event.target.parentElement.parentElement.children[0].children[0].children[0] === undefined
   ? imgUrl = null
   : imgUrl = event.target.parentElement.parentElement.children[0].children[0].children[0].attributes[0].nodeValue;
@@ -27,12 +27,13 @@ const addBookSubmitHandler = async (event) => {
   const authors = event.target.parentElement.parentElement.children[2].children[0].firstChild.data.split('Authors: ').join('').split('\n').join('').trim();
   //post request to the post route to process the text data into the database
   try {
-    const response = await fetch('/search/add-book', {
+    const response = await fetch('/book-search/add-book', {
       method: 'POST',
       body: JSON.stringify(
         {
-          username: username,
-          password: password
+          book_title,
+          author: authors,
+          picture: imgUrl
         }
       ),
       headers: {'Content-Type': 'application/json'}
