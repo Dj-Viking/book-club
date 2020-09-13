@@ -7,7 +7,7 @@ const signupFormHandler = async (event) => {
     console.log(username);
     console.log(password);
     
-    if (!username || !password) {
+    if (!username || !password || password.length <= 3) {
       Promise.resolve()
       .then(
         () => {
@@ -96,6 +96,25 @@ const loginFormHandler = async (event) => {
       document.location.replace('/')
     } else {
       console.log("There was an error");
+      Promise.resolve()
+      .then(
+        () => {
+          loginErrEl.classList.remove('hide-before-error');
+          loginErrEl.classList.add('show-after-error');
+        }
+      ).then(
+        () => {
+          setTimeout(
+            () => {
+              loginErrEl.classList.remove('show-after-error');
+              loginErrEl.classList.add('hide-before-error');
+            }, 3000
+          );
+        }
+      )
+      .catch(err => {
+        console.log(err);
+      });
     } 
   } catch (error) {
     console.log(error);

@@ -124,10 +124,15 @@ sequelize.sync(
         const userInfo = await User.findAll();
         //console.log(userInfo);
         if (userInfo[0] === undefined) {
-          const userCreate = await User.create({
+          const userCreate1 = await User.create({
             username: "asdf",
             password: "asdf",
             club_id:  1
+          });
+          const userCreate2 = await User.create({
+            username: 'mario',
+            password: 'mario',
+            club_id: 1
           });
           //console.log(userCreate);
         }
