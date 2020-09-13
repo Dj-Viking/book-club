@@ -25,7 +25,7 @@ const sess = {
     // for client connections https only but if accessing from http must set a proxy!
     // be careful when setting this to true, as compliant clients will not send the cookie back to the server in the future if the browser does not have an HTTPS connection.
     // secure: true
-    sameSite: 'lax'
+    //sameSite: 'lax'
   },
   resave: false,
   saveUninitialized: true,
