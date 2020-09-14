@@ -1,0 +1,16 @@
+{{#each this}}
+<section>
+  <h3>
+    {{!-- username  --}}
+    {{dataValues.username}}
+  </h3>
+  <div class="border-bottom">
+  {{#each dataValues.books}}
+  <p>
+    <span>{{dataValues.book_title}}</span><span> </span><span>by {{dataValues.author}}</span> 
+  </p>
+
+  {{/each}}
+  </div>
+</section>
+{{/each}}

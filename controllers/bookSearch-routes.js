@@ -36,7 +36,7 @@ router.get('/search', async (req, res) => {
     if (req.query.book_title === '' || req.query.author === '') {
       res.status(400).json({error: "cannot leave search fields blank"});
     }
-    const apiRes = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${req.query.book_title}+inauthor:${req.query.author}&key=${process.env.API_KEY}`)
+    const apiRes = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${req.query.book_title}+inauthor:${req.query.author}&key=${process.env.API_KEY}`);
     const json = await apiRes.json();
     /**
      *  loop through the json to get the results objects into the array that

@@ -107,7 +107,7 @@ sequelize.sync(
           });
           Club.create({
             club_title: "Marathon Readers"
-          })
+          });
         }
       } catch (error) {
         console.log(error);
@@ -126,8 +126,7 @@ sequelize.sync(
         if (userInfo[0] === undefined) {
           const userCreate1 = await User.create({
             username: "asdf",
-            password: "asdf",
-            club_id:  1
+            password: "asdf"
           });
           const userCreate2 = await User.create({
             username: 'mario',

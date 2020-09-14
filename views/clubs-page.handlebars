@@ -2,17 +2,30 @@
 <a href="/my-library">My Library</a>
 <a href="/book-search">Book Search</a>
 <a href="/">Back to Homepage</a> 
-<section>
-  <div class="heading-wrapper">
-    {{!-- <h1>
+  <section>
+    {{#if userClub}}
+    <h1 class="user-club">
+      Welcome to the {{userClub}} Club Page!
+    </h1>
+      <section class="club-div-container">
+        <h2>
+          All members of your club and what they're currently reading!
+        </h2>
+        <div>
+          {{!-- user's club info goes here --}}
+          {{> club-members clubAllUsers }}
+        </div>
+        <div>
+          <button>Leave Current Club</button>
+        </div>
+      </section>
+    {{else}}
+    <h1 class="user-club">
       Not in a club? Join the fun!
-    </h1> --}}
-    <h2>
-      View all members of each club below 
-    </h2>
-  </div>
-  <div class="club-info-section">
-
-  </div>
-</section>
+    </h1>
+    {{/if}}
+      <div>
+        {{> not-in-these-clubs userNonClubs}}
+      </div>
+  </section>
 <script src="/javascript/logout.js"></script>
