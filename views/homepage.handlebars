@@ -1,8 +1,16 @@
 {{#if loggedIn}}
 <a href="/clubs-page">Clubs Page</a>
 <a href="/my-library">My Library</a>
-<a href="/book-search">Book Search</a> 
+<a href="/book-search">Book Search</a>
 <h2>Welcome back, <span class="username">{{username}}</span> </h2>
+{{else}}
+<p class="description-box">Welcome to Book Club! This app allows you to explore the world of books and join book clubs
+  at the
+  same time.
+  Search books from an extensive library to find the perfect new read and even add it to your own personal library.
+  You can also choose from a variety of different clubs based on genres that peak your interest and provides you
+  with different book suggestions.
+  If you'd like to join wide world of books, please <a href="/login">Sign Up!</a></p>
 {{/if}}
 {{!-- <h2>Search a book!</h2> --}}
 <ol class="post-list">
