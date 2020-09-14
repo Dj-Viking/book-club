@@ -80,6 +80,10 @@ a:active {
   color: white;
 }
 
+.nav {
+  padding: 20px;
+}
+
 .btn-primary,
 .btn-primary:hover,
 .btn-primary:active,
