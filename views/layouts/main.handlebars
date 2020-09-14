@@ -6,7 +6,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width-device-width, initial-scale=1.0">
   <title>Book Club</title>
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@700&family=Special+Elite&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@700&family=Special+Elite&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css'>
   <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
@@ -15,8 +16,8 @@
   <!-- div wrapper class -->
   <div class="wrapper">
     <header>
-      <h1>
-        <a href="/">Book Club</a>
+      <h1 class="nav-styling">
+        <a href="/">Book Club .</a>
       </h1>
       <nav>
         {{#if loggedIn}}
@@ -25,38 +26,40 @@
         <a href="/book-search">Book Search</a>
         <!-- logout button style -->
         <button id="logout" class="btn-style">Logout</button>
-        </nav>
-     {{else}}
-      <a href="/login">Login</a> 
+        {{else}}
+        <a href="/login">Login</a>
+      </nav>
     </header>
 
-       
-        
-        {{!-- <div class="box">
+
+
+    {{!-- <div class="box">
           
       
         
         
         </div> --}}
-        <p class="box">Welcome to Book Club! This app allows you to explore the world of books and join book clubs at the same time.
-          Search books from an extensive library to find the perfect new read and even add it to your own personal library. 
-          You can also choose from a variety of different clubs based on genres that peak your interest and provides you with different book suggestions.
-          If you'd like to join wide world of books, please <a href="/login">Sign Up!</a></p>
+    <p class="description-box">Welcome to Book Club! This app allows you to explore the world of books and join book clubs at the
+      same time.
+      Search books from an extensive library to find the perfect new read and even add it to your own personal library.
+      You can also choose from a variety of different clubs based on genres that peak your interest and provides you
+      with different book suggestions.
+      If you'd like to join wide world of books, please <a href="/login">Sign Up!</a></p>
 
-        {{/if}}
-       
+    {{/if}}
 
-    
+
+
     {{!-- <div class="box">
     <div><h2>Description</h2></div>
     </div> --}}
-    
-    
+
+
     <main>
       {{{ body }}}
     </main>
-    <footer>
-      🔮
+    <footer class="footer-box">
+      🔮 Created By: Allie, Anders, Carolina
     </footer>
   </div>
   <!-- div wrapper class -->
@@ -64,7 +67,7 @@
   {{#if loggedIn}}
   <script src="/javascript/logout.js"></script>
   {{/if}}
-<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js'></script>
+  <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js'></script>
 </body>
 
 </html>
