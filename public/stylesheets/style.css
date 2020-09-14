@@ -80,7 +80,8 @@ a:active {
   color: white;
 }
 
-.nav {
+li {
+  display: inline;
   padding: 20px;
 }
 
