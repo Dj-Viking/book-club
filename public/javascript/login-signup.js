@@ -42,7 +42,7 @@ const signupFormHandler = async (event) => {
     });
     if (response.ok) {
 
-      document.location.replace('/my-library'); 
+      document.location.replace('/my-library');
     } else {
       console.log("There was an error."); 
       console.log(response.statusText);
