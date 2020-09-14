@@ -132,7 +132,8 @@ body {
 
 /* styling for the form cards */
 .login-signup {
-  margin: 20%;
+  margin: 10% 30%;
+  padding: 10px;
   background-color: black;
   opacity: 0.7;
   color: var(--fourth);
@@ -142,6 +143,7 @@ body {
 
 .card {
   background-color: black;
+  padding: 25px;
 }
 
 .card-header {
