@@ -46,6 +46,25 @@ const signupFormHandler = async (event) => {
     } else {
       console.log("There was an error."); 
       console.log(response.statusText);
+      Promise.resolve()
+      .then(
+        () => {
+          signupErrEl.classList.remove('hide-before-error');
+          signupErrEl.classList.add('show-after-error');
+        }
+      ).then(
+        () => {
+          setTimeout(
+            () => {
+              signupErrEl.classList.remove('show-after-error');
+              signupErrEl.classList.add('hide-before-error');
+            }, 3000
+          );
+        }
+      )
+      .catch(err => {
+        console.log(err);
+      });
       response.json().then(json => console.log(json)); 
     }
   } catch (error) {
