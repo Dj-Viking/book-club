@@ -1,45 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta http-equiv="content-type" content="text/html"/>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width-device-width, initial-scale=1.0">
-    <title>Book Club</title>
-    <link rel="stylesheet" href="/stylesheets/style.css">
-  </head>
 
-  <body>
-    <!-- div wrapper class -->
-    <div class="wrapper">
-      <header>
-        <h1>
-          <a href="/">Book Club</a>
-        </h1>
-        <nav>
-          {{#if loggedIn}}
-          <a href="/clubs-page">Clubs Page</a>
-          <a href="/my-library">My Library</a>
-          <a href="/book-search">Book Search</a> 
-          <!-- logout button style -->
-          <button id="logout" class="btn-style">Logout</button>
-          {{else}}
-          <a href="/login">Login</a>
-          <a href="/login">Sign Up!</a>
-          {{/if}}
-        </nav>
-      </header>
-      <main>
-        {{{ body }}}
-      </main>
-      <footer>
-         🔮
-      </footer>
+<head>
+  <meta http-equiv="content-type" content="text/html" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width-device-width, initial-scale=1.0">
+  <title>Book Club</title>
+  <link rel="stylesheet" href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css'>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+  <!-- div wrapper class -->
+  <div class="wrapper">
+    <header>
+      <h1>
+        <a href="/">Book Club</a>
+      </h1>
+      <nav>
+        {{#if loggedIn}}
+        <a href="/clubs-page">Clubs Page</a>
+        <a href="/my-library">My Library</a>
+        <a href="/book-search">Book Search</a>
+        <!-- logout button style -->
+        <button id="logout" class="btn-style">Logout</button>
+        {{else}}
+        <a href="/login">Login</a> Or
+        <a href="/login">Sign Up!</a>
+        {{/if}}
+      </nav>
+    </header>
+
+    
+    <div class="box">
+    <div><h2>Description</h2></div>
     </div>
-    <!-- div wrapper class -->
-    <!-- if user is logged in can use logout js logic -->
-    {{#if loggedIn}}
-    <script src="/javascript/logout.js"></script>
-    {{/if}}
-  </body>
-  
+    
+    
+    <main>
+      {{{ body }}}
+    </main>
+    <footer>
+      🔮
+    </footer>
+  </div>
+  <!-- div wrapper class -->
+  <!-- if user is logged in can use logout js logic -->
+  {{#if loggedIn}}
+  <script src="/javascript/logout.js"></script>
+  {{/if}}
+<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js'></script>
+</body>
+
 </html>

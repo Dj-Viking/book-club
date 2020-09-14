@@ -47,3 +47,43 @@
   cursor: pointer;
   background-color: grey;
 }
+
+/* styling for splash page */
+
+a:hover, a:visited, a:link, a:active
+{
+    text-decoration: none;
+    color: black;
+    
+}
+
+header {
+  text-align: center;
+  background: white;
+  /* opacity: 0.2; */
+}
+body {
+  background-image: url('project2-6.jpg')
+}
+
+.box {
+  height: 50px;
+  width: 500px;
+  background-color: #555;
+  text-align: center;
+  padding: 100px;
+  margin: 200px;
+  margin-left:400px;
+  /* opacity: 0.7; */
+}
+
+h2 {
+  color: black bold;
+
+}
+
+footer {
+  margin: 20px;
+  
+  background: white;
+}
