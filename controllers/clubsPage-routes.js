@@ -23,7 +23,7 @@ router.get('/', async (req, res) => {
           id: req.session.user_id
         }
       });
-      console.log(userClub_id);
+      console.log(userInfo);
       req.session.userClub_id = userInfo.dataValues.club_id;
       //get user's clubInfo
       if (req.session.userClub_id) {
@@ -82,12 +82,22 @@ router.get('/', async (req, res) => {
           // userNotInClubs: 
         });  
       } else {
+        //find all clubs to display in the join club section
+        const allClubs = await Club.findAll();
+        //console.log(allClubs);
+        //filter out the clubs that the current logged in user is not in by club id
+        for (let i = 0; i < allClubs.length; i++){
+          if(allClubs[i].id !== req.session.userClub_id){
+            userNotInTheseClubs.push(allClubs[i]);
+          }
+        }
+        console.log(userNotInTheseClubs);
         res.render('clubs-page', {
           loggedIn: req.session.loggedIn,
           username: req.session.username,
           user_id: req.session.user_id,
           userNonClubs: userNotInTheseClubs
-        })
+        });
       }
       
     } catch (error) {
