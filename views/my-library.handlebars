@@ -5,9 +5,15 @@
 <a href="/">Back to Homepage</a>
 <section class="library-container">
   <div class="club-container">
+    {{#if club}}
     <h2 class="club-name">
       Club Association: <span>{{club}}</span>
     </h2>
+    {{else}}
+    <h2 class="club-name">
+      Club Association: none
+    </h2>
+    {{/if}}
     <p class="members">
       {{!-- member names are links to look at another users library? will have to be a different page and include books they read and their group association --}}
     </p>

@@ -30,28 +30,45 @@ router.get('/', async (req, res) => {
           id: req.session.user_id
         }
       });
-      //console.log(userInfo);
-      const club = userInfo.club.dataValues.club_title;
-      const userBooks = []
-      //console.log(userInfo.dataValues.books);
-      for (let i = 0; i < userInfo.dataValues.books.length; i++){
-        userBooks.push(userInfo.dataValues.books[i].dataValues);
+      console.log(userInfo);
+      if (userInfo.dataValues.club_title) {
+        const club = userInfo.club.dataValues.club_title;
+        const userBooks = []
+        //console.log(userInfo.dataValues.books);
+        for (let i = 0; i < userInfo.dataValues.books.length; i++){
+          userBooks.push(userInfo.dataValues.books[i].dataValues);
+        }
+        console.log(req.session);
+        //console.log(userBooks);
+        const dataToHandleBars = {
+          club,
+          userBooks,
+          loggedIn: req.session.loggedIn,
+          user_id: req.session.user_id,
+          username: req.session.username
+        }
+        res.render('my-library', dataToHandleBars);
+      } else {
+        const userBooks = []
+        //console.log(userInfo.dataValues.books);
+        for (let i = 0; i < userInfo.dataValues.books.length; i++){
+          userBooks.push(userInfo.dataValues.books[i].dataValues);
+        }
+        console.log(req.session);
+        //console.log(userBooks);
+        const dataToHandleBars = {
+          userBooks,
+          loggedIn: req.session.loggedIn,
+          user_id: req.session.user_id,
+          username: req.session.username
+        }
+        res.render('my-library', dataToHandleBars);
       }
-      console.log(req.session);
-      //console.log(userBooks);
-      const dataToHandleBars = {
-        club,
-        userBooks,
-        loggedIn: req.session.loggedIn,
-        user_id: req.session.user_id,
-        username: req.session.username
-      }
-      res.render('my-library', dataToHandleBars);
     } catch (error) {
       console.log(error);
-    }
+    } 
   } else {
-    res.status(401).json({error: "Unauthorized access to this page, please log in"});
+    res.status(401).render('homepage');
   }
 });
 
