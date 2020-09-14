@@ -1,0 +1,14 @@
+    <div>
+      <p>
+        Clubs you're currently not following
+      </p>
+      {{#each this}}
+      <div>
+        {{!-- clubs user is not following go here --}}
+        <h3>
+          {{dataValues.club_title}}
+        </h3>
+        <button>Join This Club!</button>
+      </div>
+      {{/each}}
+    </div>
