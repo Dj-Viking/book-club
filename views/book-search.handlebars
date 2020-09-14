@@ -3,24 +3,26 @@
 <a href="/book-search">Book Search</a>
 <a href="/">Back to Homepage</a>
 <section>
-  <h2>Search for a Book to add into your Library!</h2>
-  <form method="GET" action="/book-search/search">
-  <div>
-    <label for="book_title">Book Title:</label>
-    <input type="text" id="book_title" name="book_title" placeholder="Book Title" autocomplete="off">
+  <div class="book-search">
+  <form class="card text-center" method="GET" action="/book-search/search">
+  <div class="card-header">Search for a Book to add into your Library!</div>
+    <div>
+      <label class="card-title" for="book_title">Book Title:</label>
+      <input class="card-text" type="text" id="book_title" name="book_title" placeholder="Book Title" autocomplete="off">
+    </div>
+    <div>
+      <label class="card-title" for="author">Author:</label>
+      <input class="card-text" type="text" id="author" name="author" placeholder="Author" autocomplete="off">
+    </div>
+    <button class="btn btn-primary" type="submit">Search!</button>
+    <div id="search-err" class="hide-before-error">
+      Cannot leave search fields empty!
+    </div>
+  </form>
   </div>
-  <div>
-    <label for="author">Author:</label><br>
-    <input type="text" id="author" name="author" placeholder="Author" autocomplete="off">
-  </div>
-  <button type="submit">Search!</button>
-  <div id="search-err" class="hide-before-error">
-    Cannot leave search fields empty!
-  </div>
-</form>
-<script src="/javascript/search-book.js"></script>
-<script src="/javascript/logout.js"></script>
-{{#if searchResults}}
-{{> book-info searchResults}}
-<script src="/javascript/add-book.js"></script>
-{{/if}}
+  <script src="/javascript/search-book.js"></script>
+  <script src="/javascript/logout.js"></script>
+  {{#if searchResults}}
+  {{> book-info searchResults}}
+  <script src="/javascript/add-book.js"></script>
+  {{/if}}
