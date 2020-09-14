@@ -24,7 +24,10 @@ router.get('/', async (req, res) => {
         }
       });
       console.log(userInfo);
-      req.session.userClub_id = userInfo.dataValues.club_id;
+      //if user is in a club store the club_id into req.session for later queries
+      if (userInfo.dataValues.club_id) {
+        req.session.userClub_id = userInfo.dataValues.club_id;
+      }
       //get user's clubInfo
       if (req.session.userClub_id) {
         const clubInfo = await Club.findOne({
