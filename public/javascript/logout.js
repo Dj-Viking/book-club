@@ -1,4 +1,4 @@
-const logout = async () => {
+logout = async () => {
   try {
     const windowLoc = window.location.toString().split('/');
     const id = windowLoc[windowLoc.length - 1];

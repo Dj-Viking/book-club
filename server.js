@@ -21,7 +21,12 @@ const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const sess = {
   secret: process.env.SECRET,
-  cookie: {},
+  cookie: {
+    // for client connections https only but if accessing from http must set a proxy!
+    // be careful when setting this to true, as compliant clients will not send the cookie back to the server in the future if the browser does not have an HTTPS connection.
+    // secure: true
+    //sameSite: 'lax'
+  },
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore(
@@ -33,6 +38,8 @@ const sess = {
 
 /** express middleware setup **/
 //session middleware
+//If you have your node.js behind a proxy and are using secure: true, you need to set “trust proxy” in express:
+// app.set('trust proxy', 1) // trust first proxy
 app.use(
   session(sess)
 );
@@ -69,7 +76,7 @@ app.use(routes);
 
 sequelize.sync(
   {
-    force: false
+    force: true
   }
 )
 .then(//listen on the PORT
@@ -105,7 +112,7 @@ sequelize.sync(
       } catch (error) {
         console.log(error);
       }
-    }, 500);
+    }, 300);
   }
 )
 .then(// seed a test user
@@ -117,46 +124,49 @@ sequelize.sync(
         const userInfo = await User.findAll();
         //console.log(userInfo);
         if (userInfo[0] === undefined) {
-          const userCreate = await User.create({
+          const userCreate1 = await User.create({
             username: "asdf",
             password: "asdf",
             club_id:  1
+          });
+          const userCreate2 = await User.create({
+            username: 'mario',
+            password: 'mario',
+            club_id: 1
           });
           //console.log(userCreate);
         }
       } catch (error) {
         console.log(error);
       }
-    }, 1000);
+    }, 400);
   }
 )
-.then(// seed a test book
-  () => {
-    setTimeout(async () => {
-      console.log(``);
-      console.log("\x1b[33m", "seeding book table with data...", "\x1b[00m");
-      try {
-        const bookInfo = await Book.findAll();
-        //console.log(bookInfo);
-        if (bookInfo[0] === undefined) {
-          const bookCreate1 = await Book.create({
-            book_title: "Flowers for Algernon",
-            author: "Daniel Keyes",
-            genre: "Fiction",
-            picture: "http://books.google.com/books/content?id=gK98gXR8onwC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api"
-          });
-          //console.log(bookCreate1);
-          const bookCreate2 = await Book.create({
-            book_title: "The Fellowship of the Ring (the Lord of the Rings, Book 1)",
-            author: "J.R.R. Tolkien",
-            genre: "Fiction",
-            picture: "http://books.google.com/books/content?id=CalSzQEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api"
-          });
-        }
-      } catch (error){
-        console.log(error);
-      }
-    }, 1500)
-  }
-)
+// .then(// seed a test book
+//   () => {
+//     setTimeout(async () => {
+//       console.log(``);
+//       console.log("\x1b[33m", "seeding book table with data...", "\x1b[00m");
+//       try {
+//         const bookInfo = await Book.findAll();
+//         //console.log(bookInfo);
+//         if (bookInfo[0] === undefined) {
+//           const bookCreate1 = await Book.create({
+//             book_title: "Flowers for Algernon",
+//             author: "Daniel Keyes",
+//             picture: "http://books.google.com/books/content?id=gK98gXR8onwC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api"
+//           });
+//           //console.log(bookCreate1);
+//           const bookCreate2 = await Book.create({
+//             book_title: "The Fellowship of the Ring (the Lord of the Rings, Book 1)",
+//             author: "J.R.R. Tolkien",
+//             picture: "http://books.google.com/books/content?id=CalSzQEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api"
+//           });
+//         }
+//       } catch (error){
+//         console.log(error);
+//       }
+//     }, 500)
+//   }
+// )
 .catch(error => console.log(error));

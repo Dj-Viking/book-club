@@ -1,3 +1,11 @@
+.border-top {
+  border-top: solid 10px black;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
 .hide-before-error {
   display: none;
   color: red;

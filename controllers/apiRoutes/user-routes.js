@@ -194,7 +194,13 @@ router.get('/clubs', async (req, res) => {
           model: User,
           attributes: {
             exclude: ['password']
-          }
+          },
+          include: [
+            {
+              model: Book,
+              attributes: ['book_title']
+            }
+          ]
         }
       ]
     });
@@ -283,7 +289,7 @@ router.put('/library/:id', (req, res) => {
   console.log(`
   
   `);
-  console.log(req.body);
+  //console.log(req.body);
   /**
    * req.body should be as the following example
    * looking to have an array because a user can have many books through the library table
@@ -296,24 +302,15 @@ router.put('/library/:id', (req, res) => {
   if (!req.body) {
     res.status(400).json({error: "request formatted incorrectly"});
   }
-  console.log(req.body);
-  User.update
-  ( 
-    req.body,
+  //console.log(req.body);
+  //check if the user's user_id is currently in the library
+  //then use the library object to manipulate the row where the
+  // user id will be and update their book_ids
+  Library.findAll(
     {
-      where: {
-        id: req.params.id
-      }
+      where: {user_id: req.params.id}
     }
   )
-  .then(user => {
-    //find all associated books from library
-    return Library.findAll(
-      {
-        where: {user_id: req.params.id}
-      }
-    )
-  })
   .then(library => {
     //get list of current book_ids
     const book_ids = library.map(({book_id})=> book_id);

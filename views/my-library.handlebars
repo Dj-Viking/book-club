@@ -1,1 +1,41 @@
-<a href="/dashboard/delete-account" class="delete-btn-style">Delete Account</a>
+{{!-- <a href="/dashboard/delete-account" class="delete-btn-style">Delete Account</a> --}}
+<a href="/clubs-page">Clubs Page</a>
+<a href="/my-library">My Library</a>
+<a href="/book-search">Book Search</a> 
+<a href="/">Back to Homepage</a>
+<section class="library-container">
+  <div class="club-container">
+    <h2 class="club-name">
+      Club Association: <span>{{club}}</span>
+    </h2>
+    <p class="members">
+      {{!-- pass in members array of associated club --}}
+      {{!-- club members: {{members}} --}}
+      {{!-- member names are links to look at another users library? will have to be a different page and include books they read and their group association --}}
+    </p>
+    {{!-- <div class="not-in-these-clubs">maybe?
+      <p>
+        
+      </p>
+      <p>
+
+      </p>
+      <p>
+
+      </p>
+    </div> --}}
+  </div>
+  <div class="library-header">
+    <h2>
+      Your Library Book Collection
+    </h2>
+  </div>
+  <div class="user-books">
+  {{#if userBooks}}
+  <article>
+    {{> user-book-library userBooks}}
+  </article>
+  {{/if}}
+  </div>
+</section>
+<script src="/javascript/logout.js"></script>

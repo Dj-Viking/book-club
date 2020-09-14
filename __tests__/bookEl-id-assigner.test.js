@@ -9,7 +9,7 @@ test('check if we can assign a property of each object inside an array a unique 
   for (let i = 0; i < searchResults.length; i++) {
     searchResults[i].bookId = i + 1;
   }
-  expect(searchResults[0].bookId).toBe("one");
+  expect(searchResults[0].bookId).toBe(1);
 
 });
 
