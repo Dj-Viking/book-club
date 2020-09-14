@@ -114,7 +114,7 @@ body {
   /* padding: 100px;
   margin: 200px;
   margin-left:400px; */
-  margin: 20%;
+  margin: 20% 20% 20% 10%;
   opacity: 0.7;
   color: var(--fourth);
   /* -webkit-text-stroke: 1px var(--fourth); */
@@ -128,8 +128,33 @@ body {
   margin: 10%;
   opacity: 0.7;
   color: var(--fourth);
+  font-family: 'Special Elite', cursive;
+  font-size: 15px;
+}
+
+.login-signup {
+  margin: 20%;
+  background-color: black;
+  opacity: 0.7;
+  color: var(--fourth);
   font-family: 'Josefin Slab', serif;
   font-size: 15px;
+}
+
+.login {
+  /* text-align: left;  */
+  /* padding-left: 200px;
+  padding-top: 00px;
+  padding-right: 10px;
+  padding-bottom: 10px; */
+}
+
+.signup {
+  /* text-align: right; */
+  /* padding-left: 10px;
+  padding-top: 10px;
+  padding-right: 200px;
+  padding-bottom: 10px; */
 }
 
 h2 {

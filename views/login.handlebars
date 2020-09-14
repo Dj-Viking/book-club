@@ -1,38 +1,40 @@
-<form class="login-form">
-  <div>
-    <label for="username-login">Username:</label>
-    <input type="text" id="username-login" placeholder="Username" autocomplete="off"/>
-  </div>
-  <div>
-    <label for="password-login">Password:</label>
-    <input type="password" id="password-login" placeholder="Password" autocomplete="off"/>
-  </div>
-  <div>
-    <button type="submit">Login</button>
-  </div>
-  <div>
-    <p class="hide-before-error" id="login-err">
-      Your login credentials were incorrect or entered in the wrong format!
-    </p>
-  </div>
-</form>
-
-<form class="signup-form">
-  <div> 
-    <label for="username-signup">Username:</label>
-    <input type="text" id="username-signup" placeholder="Username" autocomplete="off"/>
-  </div>
-  <div>
-    <label for="password-signup">Password:</label>
-    <input type="password" id="password-signup" placeholder="Password" autocomplete="off"/>
-  </div>
-  <div>
-    <button type="submit">Signup!</button>
-  </div>
+<div class="login-signup">
+  <form class="login-form card">
     <div>
-    <p class="hide-before-error" id="signup-err">
-      Your credentials we're either in the wrong format, or that username is already taken!
-    </p>
-  </div>
-</form>
+      <label class="card-title" for="username-login">Username:</label>
+      <input class="card-text" type="text" id="username-login" placeholder="Username" autocomplete="off" />
+    </div>
+    <div>
+      <label class="card-title" for="password-login">Password:</label>
+      <input class="card-text" type="password" id="password-login" placeholder="Password" autocomplete="off" />
+    </div>
+    <div>
+      <button class="btn btn-primary" type="submit">Login</button>
+    </div>
+    <div>
+      <p class="hide-before-error" id="login-err">
+        Your login credentials were incorrect or entered in the wrong format!
+      </p>
+    </div>
+  </form>
+
+  <form class="signup-form signup">
+    <div>
+      <label for="username-signup">Username:</label>
+      <input type="text" id="username-signup" placeholder="Username" autocomplete="off" />
+    </div>
+    <div>
+      <label for="password-signup">Password:</label>
+      <input type="password" id="password-signup" placeholder="Password" autocomplete="off" />
+    </div>
+    <div>
+      <button type="submit">Signup</button>
+    </div>
+    <div>
+      <p class="hide-before-error" id="signup-err">
+        Your credentials we're either in the wrong format, or that username is already taken!
+      </p>
+    </div>
+  </form>
+</div>
 <script src="/javascript/login-signup.js"></script>
