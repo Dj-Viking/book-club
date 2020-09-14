@@ -1,11 +1,11 @@
 {{#each this}}
 <section>
-  <div>
+  <div class="card mb-3">
     <article class="book">
       <form action="/book-search/add-book" method="POST" id="{{bookId}}">
-        <div class="book-img-label">
+        <div class="card-img-top book-img-label">
           <label class="book-image" id="book-img" for="book-image">
-            Book Cover:{{!-- book thumbnail --}}
+            {{!-- Book Cover:book thumbnail --}}
             {{#if imageLinks.smallThumbnail}}
             <img src="{{imageLinks.smallThumbnail}}">
             {{else}}
@@ -13,23 +13,25 @@
             {{/if}}
           </label>
         </div>
-        <div class="book-title-label">
-          <label class="book-title" id="book-title" for="book-title">
-            {{!-- book title --}}
-            Title: {{title}}
-          </label>
-        </div>
-        <div class="book-authors-label">
-          <label class="book-authors" id="book-authors" for="book-authors">
-            {{!-- authors --}}
-            Authors: {{authors}}
-          </label>
-        </div>
-        <div class="button-container">
-          <div id="add-btn-{{bookId}}">Add to My Library!</div>
+        <div class="card-body">
+          <h55 class="card-title book-title-label">
+            <label class="book-title" id="book-title" for="book-title">
+              {{!-- book title --}}
+              Title: {{title}}
+            </label>
+          </h5>
+          <p class="card-text book-authors-label">
+            <label class="book-authors" id="book-authors" for="book-authors">
+              {{!-- authors --}}
+              Authors: {{authors}}
+            </label>
+          </p>
+          <div class="btn btn-primary button-container">
+            <div id="add-btn-{{bookId}}">Add to My Library!</div>
+          </div>
         </div>
       </form>
-    </article> 
+    </article>
   </div>
 </section>
 {{/each}}
