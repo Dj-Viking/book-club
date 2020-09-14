@@ -1,24 +1,27 @@
-<a href="/clubs-page">Clubs Page</a>
-<a href="/my-library">My Library</a>
-<a href="/book-search">Book Search</a>
-<a href="/">Back to Homepage</a>
+<ul>
+  <li><a href="/clubs-page">Clubs Page</a></li>
+  <li><a href="/my-library">My Library</a></li>
+  <li><a href="/book-search">Book Search</a></li>
+  <li><a href="/">Back to Homepage</a></li>
+</ul>
 <section>
   <div class="book-search">
-  <form class="card text-center" method="GET" action="/book-search/search">
-  <div class="card-header">Search for a Book to add into your Library!</div>
-    <div>
-      <label class="card-title" for="book_title">Book Title:</label>
-      <input class="card-text" type="text" id="book_title" name="book_title" placeholder="Book Title" autocomplete="off">
-    </div>
-    <div>
-      <label class="card-title" for="author">Author:</label>
-      <input class="card-text" type="text" id="author" name="author" placeholder="Author" autocomplete="off">
-    </div>
-    <button class="btn btn-primary" type="submit">Search!</button>
-    <div id="search-err" class="hide-before-error">
-      Cannot leave search fields empty!
-    </div>
-  </form>
+    <form class="card text-center" method="GET" action="/book-search/search">
+      <div class="card-header">Search for a Book to add into your Library!</div>
+      <div>
+        <label class="card-title" for="book_title">Book Title:</label>
+        <input class="card-text" type="text" id="book_title" name="book_title" placeholder="Book Title"
+          autocomplete="off">
+      </div>
+      <div>
+        <label class="card-title" for="author">Author:</label>
+        <input class="card-text" type="text" id="author" name="author" placeholder="Author" autocomplete="off">
+      </div>
+      <button class="btn btn-primary" type="submit">Search!</button>
+      <div id="search-err" class="hide-before-error">
+        Cannot leave search fields empty!
+      </div>
+    </form>
   </div>
   <script src="/javascript/search-book.js"></script>
   <script src="/javascript/logout.js"></script>

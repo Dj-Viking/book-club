@@ -80,6 +80,11 @@ a:active {
   color: white;
 }
 
+li {
+  display: inline;
+  padding: 20px;
+}
+
 .btn-primary,
 .btn-primary:hover,
 .btn-primary:active,
