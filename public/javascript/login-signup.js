@@ -93,7 +93,7 @@ const loginFormHandler = async (event) => {
       headers: {'Content-Type': 'application/json'}
     });
     if (response.ok) {
-      document.location.replace('/')
+      document.location.replace('/my-library')
     } else {
       console.log("There was an error");
       Promise.resolve()
