@@ -9,11 +9,11 @@ font-family: 'Josefin Slab', serif; */
 }
 
 .border-top {
-  border-top: solid 10px black;
+  /* border-top: solid 10px black; */
 }
 
 .border-bottom {
-  border-bottom: solid 10px black;
+  /* border-bottom: solid 10px black; */
 }
 
 .pointer {
@@ -80,20 +80,30 @@ font-family: 'Josefin Slab', serif; */
 }
 
 /* styling for splash page */
-a:hover,
-a:visited,
-a:link,
-a:active {
+.nav-a:hover,
+.nav-a:visited,
+.nav-a:link,
+.nav-a:active {
+  text-decoration: none;
+  font-family: "Special Elite", cursive;
+  color: var(--fourth);
+  /* font-weight: bold; */
+  font-size: 30px;
+  /* -webkit-text-stroke: 1px var(--main-color); */
+  /* border-radius: 3px;
+  border: 3px solid var(--fourth); */
+  padding: 5px;
+}
+
+.title-styling:hover, 
+.title-styling:visited, 
+.title-styling:link, 
+.title-styling:active {
   text-decoration: none;
   font-family: "Special Elite", cursive;
   color: white;
   font-weight: bold;
-  font-size: 50px;
-
-}
-
-#book-club-title {
-  -webkit-text-stroke: 1px var(--main-color);
+  font-size: 80px;
 }
 
 li {
@@ -121,7 +131,7 @@ header {
 }
 
 body {
-  background-color: black;
+  /* background-color: black; */
   background-image: url("project2-9.jpg");
   /* background-repeat: no-repeat;
   background-size: auto; */
@@ -132,26 +142,28 @@ body {
   /* height: 50px;
   width: 500px; */
   /* background-color: #555; */
-  background-color: black;
+  background-color: var(--main-color);
   text-align: center;
   /* padding: 100px;
   margin: 200px;
   margin-left:400px; */
-  margin: 20%;
+  margin: 5% 20%;
   opacity: 0.7;
-  color: var(--fourth);
+  color: var(--second);
   /* -webkit-text-stroke: 1px var(--fourth); */
   font-family: "Josefin Slab", serif;
   font-size: 25px;
+  border: 5px solid var(--fourth);
+  padding: 5px;
 }
 
 /* homepage footer */
 .footer-box {
-  background-color: black;
+  background-color: var(--second);
   text-align: center;
-  margin: 10%;
+  margin: 10% 0% 2% 0%;
   opacity: 0.7;
-  color: var(--fourth);
+  color: var(--main-color);
   font-family: "Special Elite", cursive;
   font-size: 15px;
 }
@@ -160,15 +172,15 @@ body {
 .login-signup {
   margin: 10% 30%;
   padding: 10px;
-  background-color: black;
-  opacity: 0.7;
-  color: var(--fourth);
+  background-color: var(--main-color);
+  opacity: 0.9;
+  color: var(--main-color);
   font-family: "Josefin Slab", serif;
   font-size: 15px;
 }
 
 .card {
-  background-color: black;
+  /* background-color: black; */
   padding: 25px;
 }
 
@@ -176,11 +188,13 @@ body {
   font-family: "Special Elite", cursive;
   font-weight: bold;
   font-size: 20px;
-  color: white;
+  color: var(--main-color);
+  padding: 2px;
+  /* background-color: white; */
 }
 
 h2 {
-  color: black bold;
+  /* color: black bold; */
 }
 
 footer {
@@ -195,7 +209,18 @@ footer {
   margin: 5% 30% 10%;
   padding: 10px;
   background-color: var(--main-color);
-  opacity: 0.7;
+  opacity: 0.8;
+  color: var(--main-color);
+  font-family: "Josefin Slab", serif;
+  font-size: 15px;
+  border: 3px solid white;
+}
+
+.book-search-result {
+  margin: 5% 30% 10%;
+  padding: 10px;
+  background-color: var(--main-color);
+  opacity: 0.8;
   color: var(--fourth);
   font-family: "Josefin Slab", serif;
   font-size: 15px;
@@ -231,10 +256,29 @@ footer {
   padding: 20px;
 }
 
-.in-club {
+/* .in-club {
   font-family: 'Josefin Slab', serif;
   color: var(--fourth);
   -webkit-text-stroke: 1px var(--main-color);
+} */
+
+.in-club {
+  background-color: var(--main-color);
+  text-align: center;
+  margin: 5% 20%;
+  opacity: 0.7;
+  color: var(--second);
+  font-family: "Josefin Slab", serif;
+  font-size: 25px;
+  border: 5px solid var(--fourth);
+  padding: 5px;
+}
+
+.user-club {
+  font-family: "Special Elite", cursive;
+  color: var(--fourth);
+  padding: 15px;
+  border-bottom: 1px solid var(--second);
 }
 
 .user-library {
@@ -242,13 +286,25 @@ footer {
   text-align: center;
 } 
 
-.club-container {
+/* .club-container {
   font-family: 'Josefin Slab', serif;
   color: var(--fourth);
   -webkit-text-stroke: 1px var(--main-color);
   border: 3px solid var(--second);
   margin: 0 auto;
   max-width: fit-content;
+  padding: 20px;
+} */
+
+.club-container {
+  background-color: var(--main-color);
+  text-align: center;
+  margin: 5% 20%;
+  opacity: 0.7;
+  color: var(--second);
+  font-family: "Josefin Slab", serif;
+  font-size: 25px;
+  border: 5px solid var(--fourth);
   padding: 20px;
 }
 
@@ -258,4 +314,6 @@ footer {
   font-family: "Special Elite", cursive;
   margin-bottom: 20px;
   color: var(--fourth);
+  font-weight: bolder;
+  font-size: 40px;
 }
