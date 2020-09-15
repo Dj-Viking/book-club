@@ -15,7 +15,7 @@ const addBookSubmitHandler = async (event) => {
   //get img URL
   console.log("container was clicked");
   let imgUrl;
-  console.log("\x1b[33m", "image url", "\x1b[00m");
+  console.log("\x1b", "image url", "\x1b");
   console.log(event.target.parentElement.parentElement.children[0].children[0].children[0].className);
   event.target.parentElement.parentElement.children[0].children[0].children[0].className === "no-picture-text"
   ? imgUrl = null
@@ -23,12 +23,12 @@ const addBookSubmitHandler = async (event) => {
   console.log(imgUrl);
   
   //get book title
-  console.log("\x1b[33m", "book title", "\x1b[00m");
+  console.log("\x1b", "book title", "\x1b");
   console.log(event.target.parentElement.children[0].children[0].innerText.split('Title: ').join('').trim());
   const book_title = event.target.parentElement.children[0].children[0].innerText.split('Title: ').join('').trim();
 
   //get authors
-  console.log("\x1b[33m", "authors", "\x1b[00m");
+  console.log("\x1b", "authors", "\x1b");
   console.log(event.target.parentElement.children[1].children[0].innerText.split('Authors: ').join('').trim());
   const authors = event.target.parentElement.children[1].children[0].innerText.split('Authors: ').join('').trim();
   //post request to the post route to process the text data into the database
