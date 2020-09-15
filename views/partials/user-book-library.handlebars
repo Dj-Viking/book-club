@@ -1,26 +1,28 @@
 {{#each this}}
-<section>
-  <div>
+<section class="card non-club bg-light mb-3">
+  <div class="card-hearder user-library">
     Title: {{book_title}}
   </div>
-  <div>
-    Authors: {{author}}
-  </div>
-  <div>
-    Book Cover:
-    {{#if picture}}
-    <img src="{{picture}}">
-    {{else}}
-    No Picture Available!
-    {{/if}}
-  </div>
-  <form method="GET" action="/my-library/delete-book">
-    <button class="pointer" id="book-{{id}}" name="book" type="submit" value="{{id}}">Delete From Library</button>
-  </form>
-  {{!-- VERY IMPORTANT dont add any more attributes to the left of id!!! if you must add one put it to the right of id!! --}}
-  {{!-- <button type="book-{{id}}" class="pointer">Delete from Library</button> --}}
-  <div class="border-top">
+  <div class="card-body">
+    <div class="card-title user-library">
+      Authors: {{author}}
+    </div>
+    <div>
+      {{!-- Book Cover: --}}
+      {{#if picture}}
+      <img src="{{picture}}">
+      {{else}}
+      No Picture Available!
+      {{/if}}
+    </div>
+    <form method="GET" action="/my-library/delete-book">
+      <button class="pointer btn btn-primary" id="book-{{id}}" name="book" type="submit" value="{{id}}">Delete From Library</button>
+    </form>
+    {{!-- VERY IMPORTANT dont add any more attributes to the left of id!!! if you must add one put it to the right of id!! --}}
+    {{!-- <button type="book-{{id}}" class="pointer">Delete from Library</button> --}}
+    {{!-- <div class="border-top">
 
+    </div> --}}
   </div>
 </section>
 {{/each}}
