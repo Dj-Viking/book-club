@@ -17,7 +17,7 @@
   <div class="wrapper">
     <header>
       <h1 class="nav-styling">
-        <a href="/">Book Club .</a>
+        <a id="book-club-title" href="/">Book Club .</a>
       </h1>
       <nav>
         {{#if loggedIn}}
@@ -27,8 +27,9 @@
         <!-- logout button style -->
         <button id="logout" class="btn-style btn-primary">Logout</button>
         {{else}}
-        <a href="/login">Login</a>
+        
       </nav>
+      <a href="/login">Login</a>
     </header>
     {{/if}}
 

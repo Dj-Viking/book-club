@@ -26,6 +26,8 @@
   <script src="/javascript/search-book.js"></script>
   <script src="/javascript/logout.js"></script>
   {{#if searchResults}}
+  <div class="overflow">
   {{> book-info searchResults}}
+  </div>
   <script src="/javascript/add-book.js"></script>
   {{/if}}
