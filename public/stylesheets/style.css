@@ -2,10 +2,10 @@
 font-family: 'Josefin Slab', serif; */
 
 :root {
-  --main-color: #2c3e50;
-  --second: #95a5a6;
-  --third: #95a5a6;
-  --fourth: #ecf0f1;
+  --main-color: #130F40;
+  --second: #C7ECEE;
+  --third: #4834D4;
+  --fourth: #F6E58D;
 }
 
 .border-top {
@@ -40,43 +40,43 @@ font-family: 'Josefin Slab', serif; */
 
 #add-btn-1 {
   cursor: pointer;
-  background-color: grey;
+  /* background-color: grey; */
 }
 #add-btn-2 {
   cursor: pointer;
-  background-color: grey;
+  /* background-color: grey; */
 }
 #add-btn-3 {
   cursor: pointer;
-  background-color: grey;
+  /* background-color: grey; */
 }
 #add-btn-4 {
   cursor: pointer;
-  background-color: grey;
+  /* background-color: grey; */
 }
 #add-btn-5 {
   cursor: pointer;
-  background-color: grey;
+  /* background-color: grey; */
 }
 #add-btn-6 {
   cursor: pointer;
-  background-color: grey;
+  /* background-color: grey; */
 }
 #add-btn-7 {
   cursor: pointer;
-  background-color: grey;
+  /* background-color: grey; */
 }
 #add-btn-8 {
   cursor: pointer;
-  background-color: grey;
+  /* background-color: grey; */
 }
 #add-btn-9 {
   cursor: pointer;
-  background-color: grey;
+  /* background-color: grey; */
 }
 #add-btn-10 {
   cursor: pointer;
-  background-color: grey;
+  /* background-color: grey; */
 }
 
 /* styling for splash page */
@@ -87,11 +87,22 @@ a:active {
   text-decoration: none;
   font-family: "Special Elite", cursive;
   color: white;
+  font-weight: bold;
+  font-size: 50px;
+
+}
+
+#book-club-title {
+  -webkit-text-stroke: 1px var(--main-color);
 }
 
 li {
   display: inline;
   padding: 20px;
+}
+
+ul {
+  margin-top: 10px;
 }
 
 .btn-primary,
@@ -101,6 +112,7 @@ li {
   background-color: var(--main-color) !important;
   border-color: white;
   font-family: "Special Elite", cursive;
+  border-radius: 10px;
 }
 
 header {
@@ -110,9 +122,9 @@ header {
 
 body {
   background-color: black;
-  background-image: url("project2-7.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-image: url("project2-9.jpg");
+  /* background-repeat: no-repeat;
+  background-size: auto; */
 }
 
 /* homepage description */
@@ -187,4 +199,16 @@ footer {
   color: var(--fourth);
   font-family: "Josefin Slab", serif;
   font-size: 15px;
+}
+
+/* .overflow {
+  /* margin: 0; */
+  /* overflow-y: scroll;
+  overflow-x: hidden; */
+  /* width: 1000px;
+  height: 500px; } */
+
+
+.overflow::-webkit-scrollbar {
+  display: none; 
 }

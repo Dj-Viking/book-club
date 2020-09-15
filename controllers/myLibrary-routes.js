@@ -31,7 +31,7 @@ router.get('/', async (req, res) => {
         }
       });
       console.log(userInfo);
-      if (userInfo.dataValues.club_title) {
+      if (userInfo.club) {
         const club = userInfo.club.dataValues.club_title;
         const userBooks = []
         //console.log(userInfo.dataValues.books);
