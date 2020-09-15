@@ -16,14 +16,14 @@ const addBookSubmitHandler = async (event) => {
   event.target.parentElement.parentElement.children[0].children[0].children[0] === undefined
   ? imgUrl = null
   : imgUrl = event.target.parentElement.parentElement.children[0].children[0].children[0].attributes[0].nodeValue;
-  console.log(imgUrl);
+  //console.log(imgUrl);
   
   //get book title
-  console.log(event.target.parentElement.parentElement.children[1].children[0].firstChild.nodeValue.split('Title: ').join('').split('\n').join('').trim());
+  //console.log(event.target.parentElement.parentElement.children[1].children[0].firstChild.nodeValue.split('Title: ').join('').split('\n').join('').trim());
   const book_title = event.target.parentElement.parentElement.children[1].children[0].firstChild.nodeValue.split('Title: ').join('').split('\n').join('').trim();
 
   //get authors
-  console.log(event.target.parentElement.parentElement.children[2].children[0].firstChild.data.split('Authors: ').join('').split('\n').join('').trim());
+  //console.log(event.target.parentElement.parentElement.children[2].children[0].firstChild.data.split('Authors: ').join('').split('\n').join('').trim());
   const authors = event.target.parentElement.parentElement.children[2].children[0].firstChild.data.split('Authors: ').join('').split('\n').join('').trim();
   //post request to the post route to process the text data into the database
   try {
