@@ -111,4 +111,69 @@ router.get('/', async (req, res) => {
   }
 });
 
+//user leaves current club and renders the page again as if they are not in a club
+router.get('/leave-club', async (req, res) => {
+  console.log(`
+  `);
+  console.log("\x1b[33m", "Client request to leave current group and re-render the clubs page", "\x1b[00m");
+  console.log(`
+  `);
+  //check the query sent from the front end...the club_id of the user is embedded into the value of the button appended onto the page
+  console.log(req.query);
+  const noClub = {
+    club_id: null
+  }
+  if (req.session.loggedIn) {
+    //update user's club to be null since they are leaving the club
+    try {
+      const leaveClub = await User.update
+      (
+        noClub,
+        {
+          where: {
+            id: req.session.user_id
+          }
+        }
+      );
+      //this console.log should just output -> [1] saying a change was made
+      console.log(leaveClub);
+      //check if the user club_id is null now
+      const userInfo = await User.findOne({
+        attributes: {
+          exclude: ['password']
+        },
+        where: {
+          id: req.session.user_id
+        }
+      });
+      console.log(userInfo);
+      //update the req.session.club_id and clubTitle
+      req.session.club_id = userInfo.dataValues.club_id;
+      req.session.userClubTitle = null;
+      console.log(req.session);
+      //get all clubs since user left their only club
+      const clubInfo = await Club.findAll();
+      console.log(clubInfo);
+      //store the clubs for passing into handlebars
+      const userNotInTheseClubs = [];
+      for (let i = 0; i < clubInfo.length; i++) {
+        userNotInTheseClubs.push(clubInfo[i]);
+      }
+      console.log(userNotInTheseClubs);
+      res.render('clubs-page', {
+        loggedIn: req.session.loggedIn,
+        username: req.session.username,
+        user_id: req.session.user_id,
+        userNonClubs: userNotInTheseClubs
+      });
+    } catch (error) { 
+      console.log(error);
+    }
+  } else {
+    res.status(401).render('homepage');
+  }
+});
+
+//join club route needs to be a GET request because you can only render on GET requests
+
 module.exports = router;
