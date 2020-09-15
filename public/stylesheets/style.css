@@ -236,3 +236,26 @@ footer {
   color: var(--fourth);
   -webkit-text-stroke: 1px var(--main-color);
 }
+
+.user-library {
+  font-family: 'Josefin Slab', serif;
+  text-align: center;
+} 
+
+.club-container {
+  font-family: 'Josefin Slab', serif;
+  color: var(--fourth);
+  -webkit-text-stroke: 1px var(--main-color);
+  border: 3px solid var(--second);
+  margin: 0 auto;
+  max-width: fit-content;
+  padding: 20px;
+}
+
+.library-header {
+  border-bottom: 10px solid var(--second);
+  padding: 20px;
+  font-family: "Special Elite", cursive;
+  margin-bottom: 20px;
+  color: var(--fourth);
+}
