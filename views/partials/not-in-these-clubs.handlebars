@@ -1,15 +1,20 @@
-    <div>
-      <p>
-        Clubs you're currently not following
-      </p>
-      {{#each this}}
-      <div>
-        {{!-- clubs user is not following go here --}}
-        <h3>
-          {{dataValues.club_title}}
-        </h3>
-        {{!-- user join club button submission form --}}
-        <button>Join This Club!</button>
-      </div>
-      {{/each}}
+<div>
+  <h5 class="card-header">
+    Clubs you're currently not following
+  </h5>
+  <div class="card-body">
+    {{!-- <h2 class="card-title">
+      Clubs you're currently not following
+    </h2> --}}
+    {{#each this}}
+    <div class="non-club-titles card-title">
+      {{!-- clubs user is not following go here --}}
+      <h3>
+        {{dataValues.club_title}}
+      </h3>
+      {{!-- user join club button submission form --}}
+      <button class="btn btn-primary">Join This Club!</button>
     </div>
+  </div>
+  {{/each}}
+</div>

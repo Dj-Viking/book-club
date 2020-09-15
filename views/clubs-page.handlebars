@@ -2,40 +2,37 @@
   {{!-- <li><a href="/clubs-page">Clubs Page</a></li> --}}
   <li><a href="/my-library">My Library</a></li>
   <li><a href="/book-search">Book Search</a></li>
-  <li><a href="/">Back to Homepage</a></li>
-</ul> 
-  <section>
-    {{#if userClub}}
+  {{!-- <li><a href="/">Back to Homepage</a></li> --}}
+</ul>
+<section>
+  {{#if userClub}}
+  <div class="in-club">
     <h1 class="user-club">
       Welcome to the {{userClub}} Club Page!
     </h1>
-      <section class="club-div-container">
-        <h2>
-          All members of your club and what they're currently reading!
-        </h2>
-        <div>
-          {{!-- user's club info goes here --}}
-          {{> club-members clubAllUsers }}
-        </div>
-        <div>
-          {{!-- user leave club submission form --}}
-          <form method="GET" action="/clubs-page/leave-club">
-            <button 
-              class="pointer btn btn-primary" 
-              id="club-btn" 
-              name="club" type="submit" 
-              value="{{userClub_id}}">Leave Club
-            </button>
-          </form>
-        </div>
-      </section>
-    {{else}}
-    <h1 class="user-club">
-      Not in a club? Join the fun!
-    </h1>
-    {{/if}}
+    <section class="club-div-container">
+      <h2>
+        All members of your club and what they're currently reading!
+      </h2>
       <div>
-        {{> not-in-these-clubs userNonClubs}}
+        {{!-- user's club info goes here --}}
+        {{> club-members clubAllUsers }}
       </div>
-  </section>
+  </div>
+  {{!-- user leave club submission form --}}
+  <form class="leave-club" method="GET" action="/clubs-page/leave-club">
+    <button class="pointer btn btn-primary" id="club-btn" name="club" type="submit" value="{{userClub_id}}">Leave
+      Club
+    </button>
+  </form>
+</section>
+{{else}}
+<h1 class="user-club">
+  Not in a club? Join the fun!
+</h1>
+{{/if}}
+<div class="card non-club text-white bg-warning mb-3">
+  {{> not-in-these-clubs userNonClubs}}
+</div>
+</section>
 <script src="/javascript/logout.js"></script>

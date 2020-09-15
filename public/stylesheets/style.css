@@ -214,3 +214,25 @@ footer {
 .overflow::-webkit-scrollbar {
   display: none; 
 }
+
+/* non-club form */
+.non-club {
+  margin: 0 auto;
+  max-width: fit-content;
+}
+
+.non-club-titles {
+  font-family: 'Josefin Slab', serif;
+  border-bottom: 3px solid var(--second);
+  padding: 20px;
+}
+
+.leave-club {
+  padding: 20px;
+}
+
+.in-club {
+  font-family: 'Josefin Slab', serif;
+  color: var(--fourth);
+  -webkit-text-stroke: 1px var(--main-color);
+}
