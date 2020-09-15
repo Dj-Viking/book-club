@@ -29,6 +29,15 @@ font-family: 'Josefin Slab', serif; */
   color: red;
 }
 
+.hide-before-add {
+  display: none;
+  color: green;
+}
+.show-after-add {
+  display: block;
+  color: green;
+}
+
 #add-btn-1 {
   cursor: pointer;
   /* background-color: grey; */

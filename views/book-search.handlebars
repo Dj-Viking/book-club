@@ -6,7 +6,7 @@
 </ul>
 <section>
   <div class="book-search">
-    <form class="card text-center" method="GET" action="/book-search/search">
+    <form id="book-search-form"class="card text-center" method="GET" action="/book-search/search">
       <div class="card-header">Search for a Book to add into your Library!</div>
       <div>
         <label class="card-title" for="book_title">Book Title:</label>
@@ -17,7 +17,7 @@
         <label class="card-title" for="author">Author:</label>
         <input class="card-text" type="text" id="author" name="author" placeholder="Author" autocomplete="off">
       </div>
-      <button class="btn btn-primary" type="submit">Search!</button>
+      <button id="search-submit-btn" class="btn btn-primary" type="submit">Search!</button>
       <div id="search-err" class="hide-before-error">
         Cannot leave search fields empty!
       </div>

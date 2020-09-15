@@ -9,12 +9,14 @@
             {{#if imageLinks.smallThumbnail}}
             <img src="{{imageLinks.smallThumbnail}}">
             {{else}}
-            No Picture Available!
+            <div class="no-picture-text">
+              No Picture Available!
+            </div>
             {{/if}}
           </label>
         </div>
         <div class="card-body">
-          <h55 class="card-title book-title-label">
+          <h5 class="card-title book-title-label">
             <label class="book-title" id="book-title" for="book-title">
               {{!-- book title --}}
               Title: {{title}}
@@ -26,9 +28,8 @@
               Authors: {{authors}}
             </label>
           </p>
-          <div class="btn btn-primary button-container">
-            <div id="add-btn-{{bookId}}">Add to My Library!</div>
-          </div>
+            <div id="add-btn-{{bookId}}" class="btn btn-primary button-container">Add to My Library!</div>
+            <div id="add-msg-{{bookId}}" class="hide-before-add">You added this book to your library!</div>
         </div>
       </form>
     </article>
