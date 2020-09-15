@@ -13,7 +13,9 @@
         {{dataValues.club_title}}
       </h3>
       {{!-- user join club button submission form --}}
-      <button class="btn btn-primary">Join This Club!</button>
+      <form method="GET" action="/clubs-page/join-club">
+        <button id="club-join-btn" type="submit" name="club" value="{{dataValues.id}}" class="btn btn-primary">Join This Club!</button>
+      </form>
     </div>
   </div>
   {{/each}}

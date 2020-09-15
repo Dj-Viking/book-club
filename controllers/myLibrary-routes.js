@@ -33,8 +33,9 @@ router.get('/', async (req, res) => {
       console.log(userInfo);
       if (userInfo.club) {
         const club = userInfo.club.dataValues.club_title;
+        req.session.userClub_title = club;
         const userBooks = []
-        //console.log(userInfo.dataValues.books);
+        console.log(userInfo.dataValues.books);
         for (let i = 0; i < userInfo.dataValues.books.length; i++){
           userBooks.push(userInfo.dataValues.books[i].dataValues);
         }
@@ -71,11 +72,6 @@ router.get('/', async (req, res) => {
     res.status(401).render('homepage');
   }
 });
-
-//get all clubs to display which one they are not in
-
-//update users club association
-
 
 //update users book library collection and render the page again
   // will use similar library manipulation to the api route
