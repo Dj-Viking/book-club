@@ -8,14 +8,6 @@ font-family: 'Josefin Slab', serif; */
   --fourth: #F6E58D;
 }
 
-.border-top {
-  /* border-top: solid 10px black; */
-}
-
-.border-bottom {
-  /* border-bottom: solid 10px black; */
-}
-
 .pointer {
   cursor: pointer;
 }
@@ -40,43 +32,33 @@ font-family: 'Josefin Slab', serif; */
 
 #add-btn-1 {
   cursor: pointer;
-  /* background-color: grey; */
 }
 #add-btn-2 {
   cursor: pointer;
-  /* background-color: grey; */
 }
 #add-btn-3 {
   cursor: pointer;
-  /* background-color: grey; */
 }
 #add-btn-4 {
   cursor: pointer;
-  /* background-color: grey; */
 }
 #add-btn-5 {
   cursor: pointer;
-  /* background-color: grey; */
 }
 #add-btn-6 {
   cursor: pointer;
-  /* background-color: grey; */
 }
 #add-btn-7 {
   cursor: pointer;
-  /* background-color: grey; */
 }
 #add-btn-8 {
   cursor: pointer;
-  /* background-color: grey; */
 }
 #add-btn-9 {
   cursor: pointer;
-  /* background-color: grey; */
 }
 #add-btn-10 {
   cursor: pointer;
-  /* background-color: grey; */
 }
 
 /* styling for splash page */
@@ -131,10 +113,8 @@ header {
 }
 
 body {
-  /* background-color: black; */
   background-image: url("project2-9.jpg");
-  /* background-repeat: no-repeat;
-  background-size: auto; */
+  background-position: center;
 }
 
 /* homepage description */
@@ -180,7 +160,6 @@ body {
 }
 
 .card {
-  /* background-color: black; */
   padding: 25px;
 }
 
@@ -193,18 +172,12 @@ body {
   /* background-color: white; */
 }
 
-h2 {
-  /* color: black bold; */
-}
-
 footer {
   margin: 20px;
-
   background: white;
 }
 
 /* book search styling  */
-
 .book-search {
   margin: 5% 30% 10%;
   padding: 10px;
@@ -227,14 +200,10 @@ footer {
   border: 3px solid white;
 }
 
-
-/* .overflow {
-  /* margin: 0; */
-  /* overflow-y: scroll;
-  overflow-x: hidden; */
-  /* width: 1000px;
-  height: 500px; } */
-
+.users-choice {
+  border: 3px solid var(--main-color);
+  font-size: larger;
+}
 
 .overflow::-webkit-scrollbar {
   display: none; 
@@ -255,12 +224,6 @@ footer {
 .leave-club {
   padding: 20px;
 }
-
-/* .in-club {
-  font-family: 'Josefin Slab', serif;
-  color: var(--fourth);
-  -webkit-text-stroke: 1px var(--main-color);
-} */
 
 .in-club {
   background-color: var(--main-color);
@@ -285,16 +248,6 @@ footer {
   font-family: 'Josefin Slab', serif;
   text-align: center;
 } 
-
-/* .club-container {
-  font-family: 'Josefin Slab', serif;
-  color: var(--fourth);
-  -webkit-text-stroke: 1px var(--main-color);
-  border: 3px solid var(--second);
-  margin: 0 auto;
-  max-width: fit-content;
-  padding: 20px;
-} */
 
 .club-container {
   background-color: var(--main-color);
