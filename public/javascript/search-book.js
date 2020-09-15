@@ -17,7 +17,7 @@ const searchFormHandler = (event) => {
       }, 3000);
       throw new Error("Search field can't be empty.")
     } else {
-      console.log("why you no submit!!!");
+      console.log("test");
     }
   } catch (error) {
     console.log(error);

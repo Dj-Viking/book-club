@@ -127,7 +127,7 @@ sequelize.sync(
           const userCreate1 = await User.create({
             username: "asdf",
             password: "asdf",
-            club_id: 1
+            club_id: 3
           });
           const userCreate2 = await User.create({
             username: 'mario',

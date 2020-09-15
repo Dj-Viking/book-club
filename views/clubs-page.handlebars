@@ -18,7 +18,15 @@
           {{> club-members clubAllUsers }}
         </div>
         <div>
-          <button>Leave Current Club</button>
+          {{!-- user leave club submission form --}}
+          <form method="GET" action="/clubs-page/leave-club">
+            <button 
+              class="pointer btn btn-primary" 
+              id="club-btn" 
+              name="club" type="submit" 
+              value="{{userClub_id}}">Leave Club
+            </button>
+          </form>
         </div>
       </section>
     {{else}}
