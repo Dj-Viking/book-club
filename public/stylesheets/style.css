@@ -194,12 +194,14 @@ footer {
 .book-search {
   margin: 5% 30% 10%;
   padding: 10px;
-  background-color: black;
+  background-color: var(--main-color);
   opacity: 0.7;
   color: var(--fourth);
   font-family: "Josefin Slab", serif;
   font-size: 15px;
+  border: 3px solid white;
 }
+
 
 /* .overflow {
   /* margin: 0; */
