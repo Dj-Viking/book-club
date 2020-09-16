@@ -10,20 +10,19 @@
     <h1 class="user-club">
       Welcome to the {{userClub}} Club Page!
     </h1>
-    <section class="club-div-container">
-      <h2>
-        All members of your club and what they're currently reading!
-      </h2>
-      {{!-- user leave club submission form --}}
-      <form class="leave-club" method="GET" action="/clubs-page/leave-club">
-        <button class="pointer btn btn-primary" id="club-btn" name="club" type="submit" value="{{userClub_id}}">Leave
-          Club
-        </button>
-      </form>
-      <div>
-        {{!-- user's club info goes here --}}
-        {{> club-members clubAllUsers }}
-      </div>
+    <h2>
+      All members of your club and what they're currently reading!
+    </h2>
+    {{!-- user leave club submission form --}}
+    <form class="leave-club" method="GET" action="/clubs-page/leave-club">
+      <button class="pointer btn btn-primary" id="club-btn" name="club" type="submit" value="{{userClub_id}}">Leave
+        Club
+      </button>
+    </form>
+    <div>
+      {{!-- user's club info goes here --}}
+      {{> club-members clubAllUsers }}
+    </div>
   </div>
 </section>
 {{else}}
