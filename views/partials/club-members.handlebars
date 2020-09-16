@@ -2,15 +2,19 @@
 <section>
   <h3>
     {{!-- username  --}}
-    {{dataValues.username}}
+    <span class="club-member-label">Member:</span> {{dataValues.username}}
   </h3>
   <div>
+  <h3 class="member-reading-label">
+    Currently reading: 
+  </h3>
   {{#each dataValues.books}}
   <p>
     <span>{{dataValues.book_title}}</span><span> </span><span>by {{dataValues.author}}</span> 
   </p>
 
   {{/each}}
+  <div class="club-member-border"></div>
   </div>
 </section>
 {{/each}}

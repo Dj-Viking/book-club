@@ -12,6 +12,18 @@ font-family: 'Josefin Slab', serif; */
   cursor: pointer;
 }
 
+.club-member-border {
+  border-bottom: 3px solid var(--second);
+}
+.club-member-label {
+  font-family: "Special Elite", cursive;
+  color: var(--fourth);
+}
+.member-reading-label {
+  font-family: "Special Elite", cursive;
+  color: var(--fourth);
+}
+
 .hide-before-error {
   display: none;
   color: red;
