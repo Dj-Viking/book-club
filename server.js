@@ -100,13 +100,13 @@ sequelize.sync(
         //console.log(clubInfo);
         if(clubInfo[0] === undefined) {//if none exist create them
           Club.create({
-            club_title: "Biblio Nomads"
+            club_title: "Fantasy"
           });
           Club.create({
-            club_title: "Fictionizers"
+            club_title: "Horror"
           });
           Club.create({
-            club_title: "Marathon Readers"
+            club_title: "Romance"
           });
         }
       } catch (error) {
