@@ -12,6 +12,39 @@ font-family: 'Josefin Slab', serif; */
   cursor: pointer;
 }
 
+.nav-a-delete {
+  color: red !important;
+  transition: .1s !important;
+}
+.nav-a-delete:hover {
+  color: var(--third) !important;
+  transition: .1s !important;
+}
+
+.nav-a-delete:visited,
+.nav-a-delete:link,
+.nav-a-delete:active {
+  text-decoration: none;
+  font-family: "Special Elite", cursive;
+  color: red;
+  /* font-weight: bold; */
+  font-size: 30px;
+  /* -webkit-text-stroke: 1px var(--main-color); */
+  /* border-radius: 3px;
+  border: 3px solid var(--fourth); */
+  padding: 5px;
+}
+
+.text-center-custom {
+  text-align: center;
+}
+
+.delete-question-text {
+  font-family: "Special Elite", cursive;
+  color: red;
+  text-align: center;
+}
+
 .club-member-border {
   border-bottom: 3px solid var(--second);
 }
@@ -74,7 +107,14 @@ font-family: 'Josefin Slab', serif; */
 }
 
 /* styling for splash page */
-.nav-a:hover,
+.nav-a {
+  color: var(--fourth) !important;
+  transition: .1s !important;
+}
+.nav-a:hover {
+  color: var(--third) !important;
+  transition: .1s !important;
+}
 .nav-a:visited,
 .nav-a:link,
 .nav-a:active {
@@ -109,8 +149,17 @@ ul {
   margin-top: 10px;
 }
 
-.btn-primary,
-.btn-primary:hover,
+.btn-primary {
+  background-color: var(--main-color) !important;
+  border-radius: 10px;
+  border-color: white;
+  font-family: "Special Elite", cursive;
+  transition: .1s;
+}
+.btn-primary:hover{
+  background-color: var(--third) !important;
+  transition: .1s;
+}
 .btn-primary:active,
 .btn-primary:visited {
   background-color: var(--main-color) !important;
@@ -205,7 +254,7 @@ footer {
   margin: 5% 30% 10%;
   padding: 10px;
   background-color: var(--main-color);
-  opacity: 0.8;
+  opacity: 0.85;
   color: var(--fourth);
   font-family: "Josefin Slab", serif;
   font-size: 15px;
@@ -215,6 +264,7 @@ footer {
 .users-choice {
   border: 3px solid var(--main-color);
   font-size: larger;
+  justify-content: center !important;
 }
 
 .overflow::-webkit-scrollbar {
@@ -224,7 +274,8 @@ footer {
 /* non-club form */
 .non-club {
   margin: 0 auto;
-  max-width: fit-content;
+  /* max-width: fit-content; */
+  width: 50%;
 }
 
 .non-club-titles {
@@ -241,7 +292,7 @@ footer {
   background-color: var(--main-color);
   text-align: center;
   margin: 5% 20%;
-  opacity: 0.7;
+  opacity: 0.85;
   color: var(--second);
   font-family: "Josefin Slab", serif;
   font-size: 25px;
@@ -281,4 +332,21 @@ footer {
   color: var(--fourth);
   font-weight: bolder;
   font-size: 40px;
+}
+
+@media screen and (max-width: 414px) {
+
+  .login-signup {
+    margin: 10% 10%;
+  }
+  .book-search {
+    margin: 5% 10% 10%;
+  }
+  .book-search-result {
+    margin: 5% 10% 10%;
+  }
+  .in-club {
+    margin: 5% 10%;
+  }
+  
 }

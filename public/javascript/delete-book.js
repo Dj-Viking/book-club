@@ -1,3 +1,7 @@
+//not using this code at all, this was my original idea to delete a book
+// but it is severely bugged an actually prevents users from performing any other action by clicking anything besides the delete button
+// the book deleting is happening inside the HTML form itself
+// this idea arose from needing to attach event listeners to dynamically generated elements...im sure theres a better way to do this jquery
 const numRgx = /\d/;
 const deleteButtonEl = document;
 //click button handler to send request to update user library

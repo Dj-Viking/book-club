@@ -96,11 +96,18 @@ router.get('/delete-book/', (req, res) => {
       }
     })
     .then(libraryInfo => {
-      //console.log(libraryInfo)
+      
     })
     .then(
       async () => {
-        try {        
+        try {
+          //delete book from the book table
+          const deleteBook = await Book.destroy({
+            where: {
+              id: req.query.book
+            }
+          });
+          console.log(deleteBook);
           const userInfo = await User.findOne({
             attributes: {
               exclude: ['password']

@@ -1,0 +1,24 @@
+<nav class="nav-container-custom text-center">
+  <a class="text-center nav-a" href="/my-library">Back To Library</a> 
+</nav>
+<h2 class="delete-question-text">Are you sure you want to delete your account?</h2>
+<div class="book-search">
+  <form class="login-form card text-center">
+  <h3 class="card-header">Enter your login information to delete your account</h3>
+    <div>
+      <label class="card-title" for="email-login">Username:</label>
+      <input class="card-text" type="text" id="username-login" placeholder="Username" autocomplete="off"/>
+    </div>
+    <div>
+      <label class="card-title" for="password-login">Password:</label>
+      <input class="card-text" type="password" id="password-login" placeholder="Password" autocomplete="off"/>
+    </div>
+    <div>
+      <button class="btn btn-primary" type="submit" id="delete-btn" class="delete-btn-style">Delete</button>
+    </div>
+    <p class="hide-before-error" id="login-err">
+      Your login credentials were entered in the wrong format!
+    </p>
+  </form>
+</div>
+<script src="/javascript/delete-account.js"></script>

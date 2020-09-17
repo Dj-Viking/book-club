@@ -25,7 +25,7 @@ Club.hasMany(User, {
     //constraints: false
 });
 User.belongsTo(Club, {
-    foreignKey: 'club_id'
+    foreignKey: 'club_id',
     //constraints: false
 });
 
