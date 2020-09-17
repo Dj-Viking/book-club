@@ -1,15 +1,3 @@
-//add button query selectors
-const addButtonEl1 = document.querySelector('#add-btn-1');
-const addButtonEl2 = document.querySelector('#add-btn-2');
-const addButtonEl3 = document.querySelector('#add-btn-3');
-const addButtonEl4 = document.querySelector('#add-btn-4');
-const addButtonEl5 = document.querySelector('#add-btn-5');
-const addButtonEl6 = document.querySelector('#add-btn-6');
-const addButtonEl7 = document.querySelector('#add-btn-7');
-const addButtonEl8 = document.querySelector('#add-btn-8');
-const addButtonEl9 = document.querySelector('#add-btn-9');
-const addButtonEl10 = document.querySelector('#add-btn-10');
-
 const addBookSubmitHandler = async (event) => {
   /* get values of the elements relating to which form the button is contained in */
   //get img URL
@@ -45,7 +33,7 @@ const addBookSubmitHandler = async (event) => {
       headers: {'Content-Type': 'application/json'}
     });
     if (response.ok) {
-      console.log(response);
+      console.log(response.json().then(json => console.log(json)));
       //show the add msg and hide it after some time
       Promise.resolve()
       .then(
@@ -153,13 +141,44 @@ const addBookSubmitHandler = async (event) => {
     console.log(error);
   }
 };
-addButtonEl1.addEventListener('click', addBookSubmitHandler);
-addButtonEl2.addEventListener('click', addBookSubmitHandler);
-addButtonEl3.addEventListener('click', addBookSubmitHandler);
-addButtonEl4.addEventListener('click', addBookSubmitHandler);
-addButtonEl5.addEventListener('click', addBookSubmitHandler);
-addButtonEl6.addEventListener('click', addBookSubmitHandler);
-addButtonEl7.addEventListener('click', addBookSubmitHandler);
-addButtonEl8.addEventListener('click', addBookSubmitHandler);
-addButtonEl9.addEventListener('click', addBookSubmitHandler);
-addButtonEl10.addEventListener('click', addBookSubmitHandler);
+//conditionally creating event listeners since all search results may not get to 10
+// addButtonEl1.addEventListener('click', addBookSubmitHandler);
+if (document.querySelector('#add-btn-1')){
+  document.querySelector('#add-btn-1').addEventListener('click', addBookSubmitHandler);
+}
+// addButtonEl2.addEventListener('click', addBookSubmitHandler);
+if (document.querySelector('#add-btn-2')){
+  document.querySelector('#add-btn-2').addEventListener('click', addBookSubmitHandler);
+}
+// addButtonEl3.addEventListener('click', addBookSubmitHandler);
+if (document.querySelector('#add-btn-3')){
+  document.querySelector('#add-btn-3').addEventListener('click', addBookSubmitHandler);
+}
+// addButtonEl4.addEventListener('click', addBookSubmitHandler);
+if (document.querySelector('#add-btn-4')){
+  document.querySelector('#add-btn-4').addEventListener('click', addBookSubmitHandler);
+}
+// addButtonEl5.addEventListener('click', addBookSubmitHandler);
+if (document.querySelector('#add-btn-5')){
+  document.querySelector('#add-btn-5').addEventListener('click', addBookSubmitHandler);
+}
+// addButtonEl6.addEventListener('click', addBookSubmitHandler);
+if (document.querySelector('#add-btn-6')){
+  document.querySelector('#add-btn-6').addEventListener('click', addBookSubmitHandler);
+}
+// addButtonEl7.addEventListener('click', addBookSubmitHandler);
+if (document.querySelector('#add-btn-7')){
+  document.querySelector('#add-btn-7').addEventListener('click', addBookSubmitHandler);
+}
+// addButtonEl8.addEventListener('click', addBookSubmitHandler);
+if (document.querySelector('#add-btn-8')){
+  document.querySelector('#add-btn-8').addEventListener('click', addBookSubmitHandler);
+}
+// addButtonEl9.addEventListener('click', addBookSubmitHandler);
+if (document.querySelector('#add-btn-9')){
+  document.querySelector('#add-btn-9').addEventListener('click', addBookSubmitHandler);
+}
+// addButtonEl10.addEventListener('click', addBookSubmitHandler);
+if (document.querySelector('#add-btn-10')){
+  document.querySelector('#add-btn-10').addEventListener('click', addBookSubmitHandler);
+}
