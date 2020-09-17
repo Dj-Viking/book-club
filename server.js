@@ -112,7 +112,7 @@ sequelize.sync(
       } catch (error) {
         console.log(error);
       }
-    }, 300);
+    }, 500);
   }
 )
 .then(// seed a test user
@@ -139,7 +139,7 @@ sequelize.sync(
       } catch (error) {
         console.log(error);
       }
-    }, 400);
+    }, 1000);
   }
 )
 // .then(// seed a test book
