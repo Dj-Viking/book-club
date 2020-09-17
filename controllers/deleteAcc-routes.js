@@ -33,7 +33,8 @@ router.delete('/delete', async (req, res) => {
   console.log(`
   
   `);
-  console.log(req.body);
+  //THIS BODY CONTAINS PASSWORD DO NOT LOG
+  //console.log(req.body);
   if (req.body.username && req.body.password) {
     try {
       //find the user we want to delete based on the session info
