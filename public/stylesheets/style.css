@@ -21,6 +21,9 @@ font-family: 'Josefin Slab', serif; */
   transition: .1s !important;
 }
 
+.non-club-title {
+  color: var(--main-color);
+}
 .nav-a-delete:visited,
 .nav-a-delete:link,
 .nav-a-delete:active {
@@ -273,9 +276,9 @@ footer {
 
 /* non-club form */
 .non-club {
-  margin: 0 auto;
+  margin: auto;
   /* max-width: fit-content; */
-  width: 50%;
+  width: 60%;
 }
 
 .non-club-titles {
@@ -334,6 +337,52 @@ footer {
   font-size: 40px;
 }
 
+@media screen and (max-width: 800px) {
+
+  .login-signup {
+    margin: 10% 10%;
+  }
+  .book-search {
+    margin: 5% 10% 10%;
+  }
+  .book-search-result {
+    margin: 5% 10% 10%;
+  }
+  .in-club {
+    margin: 5% 10%;
+  }
+  .non-club {
+    width: 80%;
+  }
+  .club-container {
+    margin: 5% 10%;
+  }
+  
+}
+
+@media screen and (max-width: 768px) {
+
+  .login-signup {
+    margin: 10% 10%;
+  }
+  .book-search {
+    margin: 5% 10% 10%;
+  }
+  .book-search-result {
+    margin: 5% 10% 10%;
+  }
+  .in-club {
+    margin: 5% 10%;
+  }
+  .non-club {
+    width: 80%;
+  }
+  .club-container {
+    margin: 5% 10%;
+  }
+  
+}
+
 @media screen and (max-width: 414px) {
 
   .login-signup {
@@ -346,6 +395,12 @@ footer {
     margin: 5% 10% 10%;
   }
   .in-club {
+    margin: 5% 10%;
+  }
+  .non-club {
+    width: 80%;
+  }
+  .club-container {
     margin: 5% 10%;
   }
   
