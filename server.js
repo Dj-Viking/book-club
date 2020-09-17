@@ -76,7 +76,7 @@ app.use(routes);
 
 sequelize.sync(
   {
-    force: true
+    force: false
   }
 )
 .then(//listen on the PORT
